@@ -10,7 +10,11 @@ define('IMAGES', THEMEROOT.'/images');
 /* Load JS Files */
 /***********************************************************************************************/
 function load_custom_scripts() {
+	//bootstrap
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
+	//fancybox
+	wp_enqueue_script('fancybox', THEMEROOT . '/js/jquery.fancybox.pack.js', array('jquery'), '2.1.5', true);
+	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/scripts.js', array('jquery'), false, true);
 }
 
@@ -19,7 +23,7 @@ add_action('wp_enqueue_scripts', 'load_custom_scripts');
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','banner','testimonio','page','product'));
+	add_theme_support('post-thumbnails', array('post','banner','testimonio','page','product','galeria-imagen'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
@@ -60,10 +64,11 @@ if (function_exists('register_sidebar')) {
 /* Agregando nuevos tipos de post  */
 /***********************************************************************************************/	
 
-/*|>>>>>>>>>>>>>>>>>>>> BANNERS  <<<<<<<<<<<<<<<<<<<<|*/
 
-function garoe_create_banner_post_type(){
+function garoe_create_post_type(){
 
+	/*|>>>>>>>>>>>>>>>>>>>> BANNERS  <<<<<<<<<<<<<<<<<<<<|*/
+	
 	$labels = array(
 		'name' => __('Banners'),
 		'singular_name' => __('Banner'),
@@ -86,16 +91,8 @@ function garoe_create_banner_post_type(){
 		'menu_icon'   => 'dashicons-visibility',
 	);
 
-	register_post_type('banner',$args);
-}
-
-add_action( 'init', 'garoe_create_banner_post_type' );
-
-/*|>>>>>>>>>>>>>>>>>>>> TESTIMONIO  <<<<<<<<<<<<<<<<<<<<|*/
-
-function garoe_create_testimonio_post_type(){
-
-	$labels = array(
+	/*|>>>>>>>>>>>>>>>>>>>> TESTIMONIO  <<<<<<<<<<<<<<<<<<<<|*/
+	$labels2 = array(
 		'name'               => __('Testimonios'),
 		'singular_name'      => __('Testimonio'),
 		'add_new'            => __('Nuevo Testimonio'),
@@ -107,8 +104,8 @@ function garoe_create_testimonio_post_type(){
 		'not_found_in_trash' => __('Testimonio no encontrado en la papelera'),
 	);
 
-	$args = array(
-		'labels'      => $labels,
+	$args2 = array(
+		'labels'      => $labels2,
 		'has_archive' => true,
 		'public'      => true,
 		'hierachical' => false,
@@ -117,10 +114,61 @@ function garoe_create_testimonio_post_type(){
 		'menu_icon'   => 'dashicons-megaphone'
 	);
 
-	register_post_type('testimonio',$args);
+	/*|>>>>>>>>>>>>>>>>>>>> Galería Imágenes <<<<<<<<<<<<<<<<<<<<|*/
+	$labels3 = array(
+		'name'               => __('Galería Imagen'),
+		'singular_name'      => __('Imagen'),
+		'add_new'            => __('Nueva Imagen'),
+		'add_new_item'       => __('Agregar nueva Imagen'),
+		'edit_item'          => __('Editar Imagen'),
+		'view_item'          => __('Ver Imagen'),
+		'search_items'       => __('Buscar Imagen'),
+		'not_found'          => __('Imagen no encontrado'),
+		'not_found_in_trash' => __('Imagen no encontrado en la papelera'),
+	);
+
+	$args3 = array(
+		'labels'      => $labels3,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag'),
+		'menu_icon'   => 'dashicons-format-gallery'
+	);
+
+	/*|>>>>>>>>>>>>>>>>>>>> Galería Videos <<<<<<<<<<<<<<<<<<<<|*/
+	$labels4 = array(
+		'name'               => __('Galería Videos'),
+		'singular_name'      => __('Video'),
+		'add_new'            => __('Nueva Video'),
+		'add_new_item'       => __('Agregar nueva Video'),
+		'edit_item'          => __('Editar Video'),
+		'view_item'          => __('Ver Video'),
+		'search_items'       => __('Buscar Video'),
+		'not_found'          => __('Video no encontrado'),
+		'not_found_in_trash' => __('Video no encontrado en la papelera'),
+	);
+
+	$args4 = array(
+		'labels'      => $labels4,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag'),
+		'menu_icon'   => 'dashicons-video-alt3'
+	);
+	
+	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
+	register_post_type('banner',$args);
+	register_post_type('testimonio',$args2);
+	register_post_type('galeria-imagen',$args3);
+	register_post_type('galeria-video',$args4);
 }
 
-add_action( 'init', 'garoe_create_testimonio_post_type' );
+add_action( 'init', 'garoe_create_post_type' );
+
 
 
 /***********************************************************************************************/
@@ -164,7 +212,9 @@ function create_banner_category_taxonomy() {
 /* Agregar nuevo CAMPOS PERSONALIZADOS */
 /***********************************************************************************************/
 
-//>>>>>>>>> META BOX URL VIDEO <<<<<<<<<<<<<<< 
+//>>>>>>>>> META BOX URL VIDEO  <<<<<<<<<<<<<<<
+
+$arr_pstype_video = ['testimonio','galeria-video']; 
 
 add_action( 'add_meta_boxes', 'cd_meta_box_garoe_url_video_add' );
 
@@ -172,7 +222,7 @@ add_action( 'add_meta_boxes', 'cd_meta_box_garoe_url_video_add' );
 function cd_meta_box_garoe_url_video_add()
 {	
 	//solo en testimonios
-	add_meta_box( 'mb-video-garoe-url', 'Link - Url del Video', 'cd_meta_box_garoe_url_video_cb', 'testimonio', 'normal', 'high' );
+	add_meta_box( 'mb-video-garoe-url', 'Link - Url del Video', 'cd_meta_box_garoe_url_video_cb', $arr_pstype_video , 'normal', 'high' );
 }
 //customizar box
 function cd_meta_box_garoe_url_video_cb( $post )

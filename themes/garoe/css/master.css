@@ -279,6 +279,10 @@ body {
       color: #b22c00;
       font-size: 15px;
       margin: 0 auto 5px; }
+  .mainContent__gallery .mainContent__gallery__article--images {
+    margin: 0 10px 15px;
+    overflow: hidden;
+    width: 22%; }
 
 /***************** SIDEBAR  ******************** */
 .sidebarPreFooter {

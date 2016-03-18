@@ -12,7 +12,7 @@ var j = jQuery.noConflict();
 
 		j(window).on('scroll', function(){
 			if( j(this).scrollTop() > main_menu_pos ) {
-				main_menu.css({position: 'fixed', top: '0px', 'z-index' : '999999'});
+				main_menu.css({position: 'fixed', top: '0px', 'z-index' : '99'});
 			}else{
 				main_menu.css({position: 'static', top: '0px'});
 			}
@@ -23,6 +23,16 @@ var j = jQuery.noConflict();
 		//# Banner Home - libreria bootstrap #
 		j('#carousel-banner-home').carousel({
 			interval: 5000
+		});
+
+		/****************** GALERIA  ************************/
+		//Imagenes en la seccion servicios
+		j("a.grouped_elements").fancybox({
+			'transitionIn'	:	'elastic',
+			'transitionOut'	:	'elastic',
+			'speedIn'		:	600, 
+			'speedOut'		:	200, 
+			'overlayShow'	:	false
 		});
 
 
