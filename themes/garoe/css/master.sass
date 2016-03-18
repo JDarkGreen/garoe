@@ -1,0 +1,399 @@
+// Import the mixins
+@import "css3-mixins.sass"
+
+/*************************************************************************/
+/*********************  FONT FACE          ******************************/
+/*************************************************************************/
+
+//ALexis marie
+@font-face
+	font-family: Alexis
+	src: url(../fonts/alexis_marie/alexis-marie.ttf)
+	src: url(../fonts/alexis_marie/alexis-marie.eot?#iefix) format('embedded-opentype'),url(../fonts/alexis_marie/alexis-marie.woff2) format('woff2'), url(../fonts/alexis_marie/alexis-marie.woff) format('woff'), url(../fonts/alexis_marie/alexis-marie.ttf)  format('truetype'), url(../fonts/alexis_marie/alexis-marie.svg#svgFontName) format('svg') 
+
+//Geomet
+@font-face
+	font-family: Geomet
+	src: url(../fonts/geomet/geomet.ttf)
+	src: url(../fonts/geomet/geomet.eot?#iefix) format('embedded-opentype'),url(../fonts/geomet/geomet.woff2) format('woff2'), url(../fonts/geomet/geomet.woff) format('woff'), url(../fonts/geomet/geomet.ttf)  format('truetype'), url(../fonts/geomet/geomet.svg#svgFontName) format('svg')
+
+//Geomet12
+@font-face
+	font-family: 'Geomet12'
+	src: url(../fonts/geomet12/geomet12.ttf)
+	src: url(../fonts/geomet12/geomet12.eot?#iefix) format('embedded-opentype'),url(../fonts/geomet12/geomet12.woff2) format('woff2'), url(../fonts/geomet12/geomet12.woff) format('woff'), url(../fonts/geomet12/geomet12.ttf)  format('truetype'), url(../fonts/geomet12/geomet12.svg#svgFontName) format('svg')
+
+
+
+
+/*************************************************************************/
+/*********************       RESET          ******************************/
+/*************************************************************************/
+
+html,body
+	width    : 100%
+	height   : auto
+	font-size: 16px
+
+body
+	background     : url('../images/bg-body.jpg') no-repeat 
+	background-size: 100% 100%
+
+
+/*************************************************************************/
+/*********************       VARIABLES      ******************************/
+/*************************************************************************/
+
+$color_green      : #489100
+$color_lemon      : #e6ffcc
+$color_claro_green: #688c00
+
+$color_red        : #b22d00 
+$color_dark_red   : #b22c00
+
+$color_black_text: #444444
+$color_gray      : #eeeeee
+
+/*************************************************************************/
+/*********************       TEXTOS      ******************************/
+/*************************************************************************/
+
+.text-phone--green
+	color    : $color_green
+	font-size: 1.250em
+
+.text-email--red
+	color      : $color_red
+	font-size  : 0.938em
+	line-height: 18px
+	
+
+
+/*************************************************************************/
+/*********************   OBJETOS Y ELEMENTOS    **************************/
+/*************************************************************************/
+
+/*****************  WRAPPER  **************************/
+.main-wrapper
+	width : 1000px
+	margin: 0 auto
+	display: block
+
+.main-wrapper__middle
+	width  : 50%
+	display: inline-block
+
+.main-wrapper--align-center
+	align-items: center
+
+/*****************   LOGO  **************************/
+.logo 
+	margin: 0 auto
+
+.logo__container
+	width  : 70%
+	display: block
+	margin : 4px 0
+
+/*****************   HEADER **************************/
+.mainHeader
+	width          : 100%
+	background     : url(../images/barra-superior_home_garoe.png) no-repeat 
+	background-size: 100% 100%
+
+	/* widget */
+	.mainHeader__widget-info
+		padding: 0 23px 0 0
+
+.mainHeader__pre-container
+	height : 144px
+	display: flex
+
+
+/*****************  NAVIGATION **************************/
+.mainNav
+	background     : url('../images/bg-navbar.jpg')
+	background-size: 100% 100%
+	width          : 100%
+
+	/*ul*/
+	ul 
+		list-style-type: none
+		padding        : 0
+		margin         : 0 auto
+		text-align     : center 
+		li 
+			display : inline-block
+			position: relative
+			z-index : 9999
+			@include transition("all 200ms ease-in-out")
+
+			//activo y hover
+			&.current-menu-item, &.current-menu-ancestor , &:hover
+				background: green 
+
+			a 
+				color          : white
+				font-size      : 12px
+				line-height    : 14px
+				text-transform : uppercase
+				text-decoration: none
+				display        : block
+				padding        : 12px 25px
+
+			/* submenu */
+			ul 
+				background: url('../images/bg-navbar.jpg')
+				position  : absolute
+				left      : 0
+				overflow  : hidden
+				@include opacity(0)
+				@include transition("all 200ms ease-in-out")
+
+				li 
+					display: block
+
+			//hover submenu
+			&:hover ul 
+				@include opacity(1)
+
+
+/*****************  BANNERS **************************/
+
+// Home
+.sectionBanner
+	margin: 0 auto -10%
+	.carousel-inner
+		.item 
+			//image
+			img 
+				width: 100%
+
+			//caption - contenido
+			.carousel-caption
+				right      : 15%
+				top        : 15%
+				text-align : right
+
+				//titulo
+				h2
+					font-family        : 'Geomet'
+					font-size          : 5em
+					font-weight        : 700
+					margin             : 0 auto
+					text-transform     : uppercase
+					-webkit-text-shadow: 5px 4px 7px black, 5px 12px 25px rgba(0,0,0,9)
+					-moz-text-shadow   : 5px 4px 7px black, 5px 12px 25px rgba(0,0,0,9)
+					-o-text-shadow     : 5px 4px 7px black, 5px 12px 25px rgba(0,0,0,9)
+					text-shadow        : 5px 4px 7px black, 5px 12px 25px rgba(0,0,0,9)
+				//parrafo
+				p 
+					font-family        : 'Geomet12'
+					font-size          : 1.5em
+					margin             : 0 auto
+					-webkit-text-shadow: 4px -3px 5px black, 1px 3px 4px black
+					-moz-text-shadow   : 4px -3px 5px black, 1px 3px 4px black
+					-o-text-shadow     : 4px -3px 5px black, 1px 3px 4px black
+					text-shadow        : 4px -3px 5px black, 1px 3px 4px black
+
+//boton control banner
+.btn-arrowBanner
+	@include opacity(1)
+	@include transition("all 200ms ease-in-out")
+	background-color: rgba(0,0,0,0)
+	color           : #fff !important
+	font-size       : 60px
+	position        : absolute
+	text-align      : center
+	text-shadow     : 0 1px 2px rgba(0,0,0,.6)
+	top             : 35%
+
+	//hover
+	&:hover 
+		@include opacity(0.8)
+
+
+
+//left
+.btn-arrowBanner--left
+	left: 10%
+//right
+.btn-arrowBanner--right
+	right: 10%
+
+
+/***************** CONTENIDO PRINCIPAL  *********************/
+.mainContent
+	@include border-radius(15px 15px 0 0)
+	background: white 
+	margin    : 2% auto 0
+	padding   : 40px 35px
+	position  : relative
+
+	//contenedor
+	.mainContent__container
+		margin: 0 auto 27px
+
+		//titulo
+		.mainContent__container__title
+			color      : $color_dark_red
+			font-family: 'Alexis'
+			font-size  : 27px
+			line-height: 32.4px
+			margin     : 0 0 15px
+
+		//article
+		.mainContent__container__article
+			@include border-radius(10px)
+			background: $color_lemon
+			padding   : 20px 24px
+			display   : flex
+
+		//texto
+		.mainContent__container__article__text,.mainContent__container__article__text h3
+			color      : $color_black_text
+			font-size  : 13px
+			line-height: 16.9px
+			margin     : 0 auto 
+		.mainContent__container__article__text
+			margin: 0 15px 0 0
+
+/***************** GALERIA   *********************/
+.mainContent__gallery
+	display        : flex
+	flex-flow      : wrap
+	justify-content: center
+	margin         : 0 auto 20px
+
+	//articulo interno
+	.mainContent__gallery__article
+		margin  : 0 15px 15px
+		width   : 30%
+		overflow: hidden
+
+		//titulo
+		h3
+			color    : #b22c00
+			font-size: 15px
+			margin   : 0 auto 5px
+
+
+/***************** SIDEBAR  *********************/
+
+//PREFOOTER 
+.sidebarPreFooter
+	background     : $color_gray
+	display        : flex
+	padding        : 25px 21px
+	flex-flow      : row wrap
+	justify-content: space-between
+
+
+/***************** WIDGETS  *********************/
+
+//sidebar
+.sidebar-widget-prefooter
+	width          : 30%
+	
+	//image - iframe
+	iframe
+		margin: 0 auto 35px 
+
+//title
+.sidebar-widget__title
+	color      : $color_dark_red
+	font-family: 'Alexis'
+	font-size  : 22px
+	line-height: 26.4px
+	margin     : 0 auto 17px
+
+//text - description 
+.sidebar-widget__description
+	color      : $color_black_text
+	font-size  : 13px
+	line-height: 17.53px
+
+
+//ARTICULOS DE POST 
+.sidebar-widget-article
+	//title y textp
+	.sidebar-widget-article__title,.sidebar-widget-article__text
+		color      : $color_black_text
+		font-size  : 13px
+		line-height: 17.53px
+	//title
+	.sidebar-widget-article__title
+		color      : $color_dark_red
+		font-weight: 600
+	//link
+	a 
+		color      : $color_dark_red
+		font-size  : 13px
+		line-height: 17.53px
+
+
+/***************** SECCION TESTIMONIOS  *********************/
+
+//CITAS Y COMENTARIOS
+.mainContent__quote
+	min-height: 200px
+	display   : flex
+	flex-flow : wrap
+
+	//blockquote
+	.mainContent__quote__blockquote
+		margin     : 0 15px 15px
+		padding    : 15px
+		width      : 45%
+
+		//imagen
+		figure
+			float       : left
+			margin-right: 10px
+			max-width   : 70px
+
+		//parrafo
+		p 
+			color: rgba( 0,0,0,.6)
+
+
+
+
+
+/***************** SECCION WOOCOMMERCE  *********************/
+
+//productsContent
+.productsContent
+	margin: 0 auto 35px
+	//title
+	.productsContent__title
+		color      : $color_dark_red
+		font-family: 'Alexis'
+		font-size  : 27px
+		line-height: 32.4px
+		margin     : 0 0 15px
+
+	//contenedor de productos
+	.productsContent__productos
+		display: flex
+
+	//articulos o productos
+	.productsContent__product
+		width: 25%
+
+		//imagen
+		figure 
+			margin: 0 auto 16px
+
+		//titulo del producto
+		h3
+			color    : $color_dark_red
+			font-size: 15px
+			margin   : 0 auto 5px			
+		//detalle
+		a 
+			color    : $color_claro_green
+			font-size: 15px
+			margin   : 0 auto
+
+
