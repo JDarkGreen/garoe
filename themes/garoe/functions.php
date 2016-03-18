@@ -238,7 +238,7 @@ function cd_meta_box_garoe_url_video_cb( $post )
 
     ?>
     <p>
-        <label for="mb_garoe_url_video_text">Escribe la url del video : Testimonio </label>
+        <label for="mb_garoe_url_video_text">Escribe la url del video : </label>
         <input size="45" type="text" name="mb_garoe_url_video_text" id="mb_garoe_url_video_text" value="<?php echo $text; ?>" />
     </p>
     <?php    
