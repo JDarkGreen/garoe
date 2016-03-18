@@ -40,6 +40,9 @@
     	<?php endif; ?>
 		<?php $i++; endwhile; wp_reset_postdata(); ?>
     </div> <!-- /.carousel-inner -->
+	
+	<!-- Background que cubre la imagen para darle efecto curveado  -->
+    <div class="carouselImageLayer"></div> <!-- /.carouselImageLayer -->
 
      <!-- Controls -->
     <a class="btn-arrowBanner btn-arrowBanner--left" href="#carousel-banner-home" role="button" data-slide="prev">

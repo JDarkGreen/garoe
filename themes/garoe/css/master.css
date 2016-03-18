@@ -157,6 +157,13 @@ body {
 /*****************  BANNERS ************************* */
 .sectionBanner {
   margin: 0 auto -10%; }
+  .sectionBanner .carouselImageLayer {
+    background: url("../images/layer_garoe.png") no-repeat center;
+    background-size: 100% 100%;
+    bottom: 0;
+    height: 200px;
+    position: absolute;
+    width: 100%; }
   .sectionBanner .carousel-inner .item img {
     width: 100%; }
   .sectionBanner .carousel-inner .item .carousel-caption {
