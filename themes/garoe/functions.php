@@ -110,7 +110,7 @@ function garoe_create_post_type(){
 		'public'      => true,
 		'hierachical' => false,
 		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
-		'taxonomies'  => array('post-tag'),
+		'taxonomies'  => array('post-tag','testimonio_category'),
 		'menu_icon'   => 'dashicons-megaphone'
 	);
 
@@ -175,36 +175,57 @@ add_action( 'init', 'garoe_create_post_type' );
 /* Registrar nueva taxomomia para  nuevos tipos de post  */
 /***********************************************************************************************/	
 
-/* categorias banner */
-add_action( 'init', 'create_banner_category_taxonomy', 0 );
+//create a custom taxonomy 
+add_action( 'init', 'create_garoe_taxonomy', 0 );
 
-//create a custom taxonomy categorias banner
-function create_banner_category_taxonomy() {
+function create_garoe_taxonomy() {
 
-  $labels = array(
-    'name'             => __( 'Categoría Banner'),
-    'singular_name'    => __( 'Categoría Banner'),
-    'search_items'     => __( 'Buscar Categoría Banner'),
-    'all_items'        => __( 'Todas Categorías del Banner' ),
-    'parent_item'      => __( 'Categoría padre del banner' ),
-    'parent_item_colon'=> __( 'Categoría padre:' ),
-    'edit_item'        => __( 'Editar categoría de banner' ), 
-    'update_item'      => __( 'Actualizar categoría de banner' ),
-    'add_new_item'     => __( 'Agregar nueva categoría de banner' ),
-    'new_item_name'    => __( 'Nuevo nombre categoría de banner' ),
-    'menu_name'        => __( 'Categoria Banner' ),
-  ); 	
+	/*>>>>>>>>>>>> categorias banner */
+  	$labels = array(
+	    'name'             => __( 'Categoría Banner'),
+	    'singular_name'    => __( 'Categoría Banner'),
+	    'search_items'     => __( 'Buscar Categoría Banner'),
+	    'all_items'        => __( 'Todas Categorías del Banner' ),
+	    'parent_item'      => __( 'Categoría padre del banner' ),
+	    'parent_item_colon'=> __( 'Categoría padre:' ),
+	    'edit_item'        => __( 'Editar categoría de banner' ), 
+	    'update_item'      => __( 'Actualizar categoría de banner' ),
+	    'add_new_item'     => __( 'Agregar nueva categoría de banner' ),
+	    'new_item_name'    => __( 'Nuevo nombre categoría de banner' ),
+	    'menu_name'        => __( 'Categoria Banner' ),
+	);   	
+	/*>>>>>>>>>>>> categorias testimonios */
+	$labels2 = array(
+	    'name'             => __( 'Categoría Testimonio'),
+	    'singular_name'    => __( 'Categoría Testimonio'),
+	    'search_items'     => __( 'Buscar Categoría Testimonio'),
+	    'all_items'        => __( 'Todas Categorías del Testimonio' ),
+	    'parent_item'      => __( 'Categoría padre del Testimonio' ),
+	    'parent_item_colon'=> __( 'Categoría padre:' ),
+	    'edit_item'        => __( 'Editar categoría de Testimonio' ), 
+	    'update_item'      => __( 'Actualizar categoría de Testimonio' ),
+	    'add_new_item'     => __( 'Agregar nueva categoría de Testimonio' ),
+	    'new_item_name'    => __( 'Nuevo nombre categoría de Testimonio' ),
+	    'menu_name'        => __( 'Categoria Testimonio' ),
+	); 	
 
-// Now register the taxonomy
-
-  register_taxonomy('banner_category',array('banner'), array(
-    'hierarchical'     => true,
-    'labels'           => $labels,
-    'show_ui'          => true,
-    'show_admin_column'=> true,
-    'query_var'        => true,
-    'rewrite'          => array( 'slug' => 'banner-category' ),
-  ));
+  //registrar taxonomía
+  	register_taxonomy('banner_category',array('banner'), array(
+	    'hierarchical'     => true,
+	    'labels'           => $labels,
+	    'show_ui'          => true,
+	    'show_admin_column'=> true,
+	    'query_var'        => true,
+	    'rewrite'          => array( 'slug' => 'banner-category' ),
+  	));  	
+  	register_taxonomy('testimonio_category',array('testimonio'), array(
+	    'hierarchical'     => true,
+	    'labels'           => $labels2,
+	    'show_ui'          => true,
+	    'show_admin_column'=> true,
+	    'query_var'        => true,
+	    'rewrite'          => array( 'slug' => 'testimonio-category' ),
+  	));
 
 }
 
@@ -292,6 +313,7 @@ function inox_add_thumbnail_columns( $columns ) {
 		'title'          => 'Title',
 		'author'         => 'Author',
 		'categories'     => 'Categories',
+		"destination"    => "Destination",
 		'tags'           => 'Tags',
 		'comments'       => '<span class="vers"><div title="Comments" class="comment-grey-bubble"></div></span>',
 		'date'           => 'Date'
@@ -301,17 +323,58 @@ function inox_add_thumbnail_columns( $columns ) {
 
 function inox_add_thumbnail_columns_data( $column, $post_id ) {
     switch ( $column ) {
-    case 'featured_thumb':
-        echo '<a href="' . get_edit_post_link() . '">';
-        echo the_post_thumbnail( 'thumbnail' );
-        echo '</a>';
-        break;
+
+	    //>>>CASO THUMBNAIL
+	    case 'featured_thumb':
+	        echo '<a href="' . get_edit_post_link() . '">';
+
+	        //tipo de post 
+	        $post_type = get_post_type( $post_id );
+
+	        switch (  $post_type ) {
+	        	case 'testimonio': //caso testimonio
+	        		//conseguir el video
+	        		$video = get_post_meta( $post_id , 'mb_garoe_url_video_text' , true ); 
+						if ( !empty($video) && has_term( 'video' , 'testimonio_category' ,  $post_id ) ) : //si tiene video y pertenece a la categoria video
+							$video = str_replace("watch?v=", "embed/", $video );
+						?>
+							<iframe width="100%" height="100" src="<?= $video; ?>" allowfullscreen></iframe>
+					<?php endif;
+	        		echo the_post_thumbnail(array(80,80));
+	        	break;
+	        	
+	        	default:
+	        		echo the_post_thumbnail( 'thumbnail' );
+	        		break;
+	        }
+
+	        echo '</a>';
+	    break;
+
+	    //>>>CASO CATEGORIAS
+		case "destination":
+	  		$post_type = get_post_type( $post_id );
+
+	  		switch (  $post_type ) {
+	        	case 'testimonio': //caso testimonio
+	        		$terms = get_the_terms( $post_id , 'testimonio_category' );
+	        		echo  "<p style='text-align:left;'>";
+	        		if( !empty($terms) ){
+	        			foreach ($terms as $term ) { echo $term->name . " "; }
+	        		}else{
+	        			echo "sin categoria";
+	        		}
+	        		echo "</p>";
+	        	break;
+	        }
+	    break;
     }
 }
 
 if ( function_exists( 'add_theme_support' ) ) {
     add_filter( 'manage_posts_columns' , 'inox_add_thumbnail_columns' );
     add_action( 'manage_posts_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
+
     add_filter( 'manage_pages_columns' , 'inox_add_thumbnail_columns' );
     add_action( 'manage_pages_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
 }
