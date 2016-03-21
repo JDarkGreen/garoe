@@ -23,7 +23,7 @@ add_action('wp_enqueue_scripts', 'load_custom_scripts');
 /* Add Theme Support for Post Formats, Post Thumbnails and Automatic Feed Links */
 /***********************************************************************************************/
 	add_theme_support('post-formats', array('link', 'quote', 'gallery', 'video'));
-	add_theme_support('post-thumbnails', array('post','banner','testimonio','page','product','galeria-imagen'));
+	add_theme_support('post-thumbnails', array('post','banner','testimonio','page','product','galeria-imagen','servicio'));
 	set_post_thumbnail_size(210, 210, true);
 	add_image_size('custom-blog-image', 784, 350);
 	add_theme_support('automatic-feed-links');
@@ -159,12 +159,36 @@ function garoe_create_post_type(){
 		'taxonomies'  => array('post-tag'),
 		'menu_icon'   => 'dashicons-video-alt3'
 	);
+
+	/*|>>>>>>>>>>>>>>>>>>>> SERVICIO  <<<<<<<<<<<<<<<<<<<<|*/
+	$labels5 = array(
+		'name'               => __('Servicios'),
+		'singular_name'      => __('Servicio'),
+		'add_new'            => __('Nuevo Servicio'),
+		'add_new_item'       => __('Agregar nuevo Servicio'),
+		'edit_item'          => __('Editar Servicio'),
+		'view_item'          => __('Ver Servicio'),
+		'search_items'       => __('Buscar Servicio'),
+		'not_found'          => __('Testimonio no encontrado'),
+		'not_found_in_trash' => __('Testimonio no encontrado en la papelera'),
+	);
+
+	$args5 = array(
+		'labels'      => $labels5,
+		'has_archive' => true,
+		'public'      => true,
+		'hierachical' => false,
+		'supports'    => array('title','editor','excerpt','custom-fields','thumbnail','page-attributes'),
+		'taxonomies'  => array('post-tag'),
+		'menu_icon'   => 'dashicons-portfolio'
+	);
 	
 	/*|>>>>>>>>>>>>>>>>>>>> REGISTRAR  <<<<<<<<<<<<<<<<<<<<|*/
 	register_post_type('banner',$args);
 	register_post_type('testimonio',$args2);
 	register_post_type('galeria-imagen',$args3);
 	register_post_type('galeria-video',$args4);
+	register_post_type('servicio',$args5);
 }
 
 add_action( 'init', 'garoe_create_post_type' );
@@ -354,7 +378,7 @@ function inox_add_thumbnail_columns_data( $column, $post_id ) {
 	        	break;
 	        	
 	        	default:
-	        		echo the_post_thumbnail( 'thumbnail' );
+	        		echo the_post_thumbnail(array(100,100));
 	        		break;
 	        }
 

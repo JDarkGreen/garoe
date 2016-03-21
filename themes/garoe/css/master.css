@@ -14,6 +14,7 @@
 /************************************************************************ */
 /*********************  FONT FACE          ***************************** */
 /************************************************************************ */
+@import url(https://fonts.googleapis.com/css?family=Oswald);
 @font-face {
   font-family: Alexis;
   src: url(../fonts/alexis_marie/alexis-marie.ttf);
@@ -264,6 +265,52 @@ body {
       margin: 0 auto; }
     .mainContent .mainContent__container .mainContent__container__article__text {
       margin: 0 15px 0 0; }
+
+/***************** CONTENIDO PAGINA SERVICIOS  ******************** */
+.mainContent__containerService {
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  background: #FFFAE4;
+  padding: 20px 24px; }
+  .mainContent__containerService .mainContent__containerService__article {
+    align-items: center;
+    display: flex; }
+    .mainContent__containerService .mainContent__containerService__article h2 {
+      color: #322f20;
+      font-family: "Oswald", sans-serif;
+      font-size: 26px; }
+    .mainContent__containerService .mainContent__containerService__article figure {
+      border: 8px solid #ebaa98;
+      border-radius: 50%;
+      margin: 0 20px 15px;
+      display: inline-block;
+      overflow: hidden;
+      transition: all 900ms ease-in-out;
+      -moz-transition: all 900ms ease-in-out;
+      -webkit-transition: all 900ms ease-in-out;
+      -o-transition: all 900ms ease-in-out;
+      -webkit-mask-image: -webkit-radial-gradient(white, black); }
+      .mainContent__containerService .mainContent__containerService__article figure img {
+        transition: all 900ms ease-in-out;
+        -webkit-transition: all 900ms ease-in-out;
+        -moz-transition: all 900ms ease-in-out;
+        -o-transition: all 900ms ease-in-out; }
+      .mainContent__containerService .mainContent__containerService__article figure:hover {
+        border-color: #A94E0A; }
+        .mainContent__containerService .mainContent__containerService__article figure:hover img {
+          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+          -moz-transform: scale(1.2);
+          -o-transform: scale(1.2); }
+    .mainContent__containerService .mainContent__containerService__article p {
+      font-size: 12px;
+      text-align: justify; }
+    .mainContent__containerService .mainContent__containerService__article .mainContent__containerService__article__text {
+      width: 70%; }
 
 /***************** GALERIA   ******************** */
 .mainContent__gallery {
