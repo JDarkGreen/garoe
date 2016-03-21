@@ -95,6 +95,25 @@ function garoe_customize_register($wp_customize) {
 		'type'     => 'text'
 	));
 
+	//Customizar WIDGET NOSOTROS
+	$wp_customize->add_section('garoe_widget_nosotros', array(
+		'title' => __('Sección WIDGET NOSOTROS', 'garoe-framework'),
+		'description' => __('Sección WIDGET NOSOTROS', 'garoe-framework'),
+		'priority' => 40
+	));
 	
+	$wp_customize->add_setting('garoe_custom_settings[widget_nosotros]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	
+	$wp_customize->add_control('garoe_custom_settings[widget_nosotros]', array(
+		'label'    => __('Escribe contenido que ira en widget nosotros en el footer', 'garoe-framework'),
+		'section'  => 'garoe_widget_nosotros',
+		'settings' => 'garoe_custom_settings[widget_nosotros]',
+		'type'     => 'textarea'
+	));
+
+
 }	
 ?>
