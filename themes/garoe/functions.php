@@ -342,6 +342,16 @@ function inox_add_thumbnail_columns_data( $column, $post_id ) {
 					<?php endif;
 	        		echo the_post_thumbnail(array(80,80));
 	        	break;
+
+	        	case 'galeria-video': //caso video galerias
+	        		//conseguir el video
+	        		$video = get_post_meta( $post_id , 'mb_garoe_url_video_text' , true ); 
+						if ( !empty($video)  ) : //si tiene video y pertenece a la categoria video
+							$video = str_replace("watch?v=", "embed/", $video );
+						?>
+							<iframe width="100%" height="100" src="<?= $video; ?>" allowfullscreen></iframe>
+					<?php endif;
+	        	break;
 	        	
 	        	default:
 	        		echo the_post_thumbnail( 'thumbnail' );
