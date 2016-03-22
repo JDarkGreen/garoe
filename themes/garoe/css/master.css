@@ -57,6 +57,13 @@ body {
 /************************************************************************ */
 /*********************   OBJETOS Y ELEMENTOS    ************************* */
 /************************************************************************ */
+.separator-line {
+  background: url("../images/linea_garoe.jpg") no-repeat;
+  display: block;
+  height: 6px;
+  margin: 30px auto;
+  width: 100%; }
+
 /*****************  WRAPPER  ************************* */
 .main-wrapper {
   width: 1000px;
@@ -126,9 +133,10 @@ body {
         padding: 12px 25px; }
       .mainNav ul li ul {
         background: url("../images/bg-navbar.jpg");
-        position: absolute;
+        height: 0;
         left: 0;
         overflow: hidden;
+        position: absolute;
         filter: alpha(opacity=0);
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
         -webkit-opacity: 0;
@@ -153,7 +161,8 @@ body {
         -moz-opacity: 1;
         -ms-opacity: 1;
         -o-opacity: 1;
-        opacity: 1; }
+        opacity: 1;
+        height: auto; }
 
 /*****************  BANNERS ************************* */
 .sectionBanner {
@@ -311,12 +320,118 @@ body {
       text-align: justify; }
     .mainContent__containerService .mainContent__containerService__article .mainContent__containerService__article__text {
       width: 70%; }
-  .mainContent__containerService .separator-line {
-    background: url("../images/linea_garoe.jpg") no-repeat;
-    display: block;
-    height: 6px;
-    margin: 30px auto;
-    width: 100%; }
+
+/***************** CONTENIDO PAGINA CONTACTO  ******************** */
+.mainContent__containerContacto {
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  background: #FFFAE4;
+  padding: 20px 24px; }
+  .mainContent__containerContacto .mainContent__containerContacto__info {
+    align-items: center;
+    display: flex;
+    justify-content: space-around; }
+    .mainContent__containerContacto .mainContent__containerContacto__info .info-item h2 {
+      font-family: "Oswald", sans-serif;
+      font-size: 20px;
+      margin: 0 auto 16px; }
+    .mainContent__containerContacto .mainContent__containerContacto__info .info-item p {
+      font-size: 0.75em; }
+    .mainContent__containerContacto .mainContent__containerContacto__info .info-item i {
+      margin: 0 15px 0 0; }
+    .mainContent__containerContacto .mainContent__containerContacto__info .info-item figure.image_icono_arbol {
+      margin: 0 15px 0 0; }
+    .mainContent__containerContacto .mainContent__containerContacto__info .info-item figure.image_contact {
+      border: 6px solid #b22c00;
+      border-radius: 50%;
+      margin: 0 auto;
+      max-width: 190px;
+      overflow: hidden;
+      -webkit-mask-image: -webkit-radial-gradient(white, black); }
+      .mainContent__containerContacto .mainContent__containerContacto__info .info-item figure.image_contact img {
+        -webkit-transition: all 600ms ease;
+        -khtml-transition: all 600ms ease;
+        -moz-transition: all 600ms ease;
+        -ms-transition: all 600ms ease;
+        -o-transition: all 600ms ease;
+        transition: all 600ms ease; }
+      .mainContent__containerContacto .mainContent__containerContacto__info .info-item figure.image_contact:hover img {
+        -webkit-transform: scale(1.2);
+        -khtml-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2); }
+  .mainContent__containerContacto .mainContent__containerContacto__form {
+    margin: 20px 50px 0;
+    max-width: 530px; }
+    .mainContent__containerContacto .mainContent__containerContacto__form .form-group {
+      font-size: 0.8125em;
+      position: relative; }
+      .mainContent__containerContacto .mainContent__containerContacto__form .form-group label {
+        font-weight: 500;
+        margin: 10px auto;
+        max-width: 100px;
+        vertical-align: top;
+        width: 20%; }
+        .mainContent__containerContacto .mainContent__containerContacto__form .form-group label i {
+          color: red; }
+        .mainContent__containerContacto .mainContent__containerContacto__form .form-group label.error {
+          -webkit-transition: all 500ms ease;
+          -khtml-transition: all 500ms ease;
+          -moz-transition: all 500ms ease;
+          -ms-transition: all 500ms ease;
+          -o-transition: all 500ms ease;
+          transition: all 500ms ease;
+          background: red;
+          color: white;
+          font-style: italic;
+          margin: 0 auto;
+          max-width: 100%;
+          padding: 5px;
+          position: absolute;
+          right: 6px;
+          top: -28px;
+          width: auto; }
+      .mainContent__containerContacto .mainContent__containerContacto__form .form-group input, .mainContent__containerContacto .mainContent__containerContacto__form .form-group textarea {
+        background-color: #fbf2ce;
+        border: 1px solid #BBAF9B;
+        max-width: 420px;
+        outline: 0;
+        padding: 10px;
+        width: 80%; }
+      .mainContent__containerContacto .mainContent__containerContacto__form .form-group textarea {
+        height: 105px;
+        max-height: 105px; }
+      .mainContent__containerContacto .mainContent__containerContacto__form .form-group button {
+        background: #7c664e;
+        border: none;
+        color: white;
+        font-family: "Oswald", sans-serif;
+        font-size: 16px;
+        outline: 0;
+        padding: 5px 20px;
+        -webkit-transition: all 500ms ease;
+        -khtml-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease; }
+        .mainContent__containerContacto .mainContent__containerContacto__form .form-group button:hover {
+          -webkit-transform: scale(1.2);
+          -khtml-transform: scale(1.2);
+          -moz-transform: scale(1.2);
+          -ms-transform: scale(1.2);
+          -o-transform: scale(1.2);
+          transform: scale(1.2); }
+      .mainContent__containerContacto .mainContent__containerContacto__form .form-group .error {
+        background: #FFECE6;
+        border-top: 2px solid red;
+        color: #EC572F; }
 
 /***************** GALERIA   ******************** */
 .mainContent__gallery {

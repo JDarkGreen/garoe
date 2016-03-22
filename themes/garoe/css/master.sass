@@ -65,6 +65,8 @@ $color_pink       : #FFFAE4
 $color_pink_claro : #ebaa98
 
 
+$color_melon      : #fbf2ce
+
 /*************************************************************************/
 /*********************       TEXTOS      ******************************/
 /*************************************************************************/
@@ -83,6 +85,15 @@ $color_pink_claro : #ebaa98
 /*************************************************************************/
 /*********************   OBJETOS Y ELEMENTOS    **************************/
 /*************************************************************************/
+
+//linea de sepación
+.separator-line
+	background: url('../images/linea_garoe.jpg') no-repeat
+	display   : block
+	height    : 6px
+	margin    : 30px auto 
+	width     : 100%
+
 
 /*****************  WRAPPER  **************************/
 .main-wrapper
@@ -155,9 +166,10 @@ $color_pink_claro : #ebaa98
 			/* submenu */
 			ul 
 				background: url('../images/bg-navbar.jpg')
-				position  : absolute
+				height    : 0
 				left      : 0
 				overflow  : hidden
+				position  : absolute
 				@include opacity(0)
 				@include transition("all 200ms ease-in-out")
 
@@ -167,6 +179,7 @@ $color_pink_claro : #ebaa98
 			//hover submenu
 			&:hover ul 
 				@include opacity(1)
+				height: auto
 
 
 /*****************  BANNERS **************************/
@@ -337,13 +350,117 @@ $color_pink_claro : #ebaa98
 		.mainContent__containerService__article__text
 			width: 70%
 
-	//linea de sepación
-	.separator-line
-		background: url('../images/linea_garoe.jpg') no-repeat
-		display   : block
-		height    : 6px
-		margin    : 30px auto 
-		width     : 100%
+
+
+
+/***************** CONTENIDO PAGINA CONTACTO  *********************/
+.mainContent__containerContacto
+	@include border-radius(10px)
+	background: $color_pink
+	padding   : 20px 24px
+
+	//contenedor flexible primera parte
+	.mainContent__containerContacto__info
+		align-items    : center
+		display        : flex
+		justify-content: space-around
+
+		//item de cada formulario
+		.info-item
+			h2
+				font-family: 'Oswald', sans-serif
+				font-size  : 20px 
+				margin     : 0 auto 16px
+
+			//parrafo
+			p 
+				font-size: 0.75em
+
+			//icono pequeno
+			i 
+				margin: 0 15px 0 0
+
+			figure
+				&.image_icono_arbol
+					margin: 0 15px 0 0
+				 
+				//imagen de contacto
+				&.image_contact
+					border       : 6px solid $color_dark_red
+					border-radius: 50%
+					margin       : 0 auto
+					max-width    : 190px
+					overflow     : hidden
+					-webkit-mask-image: -webkit-radial-gradient(white, black)
+
+					img 
+						@include transition("all 600ms ease")
+
+					&:hover 
+						img 
+							@include transform("scale(1.2)")
+
+	//contenedor de formulario segunda parte
+	.mainContent__containerContacto__form
+		margin: 20px 50px 0
+		max-width: 530px
+		
+		.form-group
+			font-size: 0.8125em 
+			position : relative
+			label
+				font-weight   : 500 
+				margin        : 10px auto 
+				max-width     : 100px 
+				vertical-align: top
+				width         : 20%
+
+				i 
+					color: red
+
+				&.error
+					@include transition("all 500ms ease")
+					background: red
+					color     : white
+					font-style: italic
+					margin    : 0 auto
+					max-width : 100%
+					padding   : 5px
+					position  : absolute
+					right     : 6px
+					top       : -28px
+					width     : auto
+
+			input,textarea
+				background-color: $color_melon
+				border          : 1px solid #BBAF9B
+				max-width       : 420px 
+				outline         : 0
+				padding         : 10px 
+				width           : 80%
+			textarea
+				height    : 105px
+				max-height: 105px
+
+			//boton submit
+			button
+				background : #7c664e
+				border     : none 
+				color      : white 
+				font-family: 'Oswald',sans-serif
+				font-size  : 16px 
+				outline    : 0
+				padding    : 5px 20px
+				@include transition("all 500ms ease")
+
+				&:hover
+					@include transform("scale(1.2)")
+					 
+			//mensaje de error
+			.error
+				background: #FFECE6
+				border-top: 2px solid red
+				color     : #EC572F	
 
 /***************** GALERIA   *********************/
 .mainContent__gallery

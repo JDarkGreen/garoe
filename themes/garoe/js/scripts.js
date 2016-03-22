@@ -35,6 +35,43 @@ var j = jQuery.noConflict();
 			'overlayShow'	:	false
 		});
 
+		//##################### VALIDACION  #######################//
+
+		j('#register').submit(function(e) {
+            e.preventDefault();
+        }).validate({
+            debug: false,
+            rules: {
+                "garoe_name": {
+                    minlength: 4,
+                },
+                "garoe_lastname": {
+                    minlength: 4,
+                },
+                "garoe_message": {
+                    minlength: 10,
+                }
+            },
+            messages: {
+                "garoe_name": {
+                    required: "Introduce tus nombres.",
+                    minlength: "Debe contener al menos 4 caracteres.",
+                },
+                "garoe_lastname": {
+                    required: "Introduce tus apellidos.",
+                    minlength: "Debe contener al menos 4 caracteres.",
+                },
+                "garoe_email": {
+                    required: "Introduce tu email.",
+                    email   : "Introduce un email válido",
+                },
+                "garoe_message": {
+                    required: "Introduce tu mensaje.",
+                    minlength: "Debe contener al menos 10 caracteres.",
+                },
+            }
+        });
+
 
 
 

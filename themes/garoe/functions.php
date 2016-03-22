@@ -14,6 +14,9 @@ function load_custom_scripts() {
 	wp_enqueue_script('bootstrap', THEMEROOT . '/js/bootstrap.min.js', array('jquery'), '3.3.6', true);
 	//fancybox
 	wp_enqueue_script('fancybox', THEMEROOT . '/js/jquery.fancybox.pack.js', array('jquery'), '2.1.5', true);
+	//valitate
+	wp_enqueue_script('validate', THEMEROOT . '/js/jquery.validate.min.js', array('jquery'), '1.15', true);
+	
 	//script
 	wp_enqueue_script('custom_script', THEMEROOT . '/js/scripts.js', array('jquery'), false, true);
 }

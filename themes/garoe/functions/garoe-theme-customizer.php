@@ -166,6 +166,35 @@ function garoe_customize_register($wp_customize) {
 		'type'     => 'text'
 	));
 
+	//CUSTOMIZAR DIRECCION DE CONTACTO
+	$wp_customize->add_section('garoe_contact_address', array(
+		'title' => __('Dirección de Contacto', 'garoe-framework'),
+		'description' => __('Dirección de Contacto', 'garoe-framework'),
+		'priority' => 39
+	));
+	
+	$wp_customize->add_setting('garoe_custom_settings[contact_address]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	
+	$wp_customize->add_control('garoe_custom_settings[contact_address]', array(
+		'label'    => __('Escribe la dirección de contacto', 'garoe-framework'),
+		'section'  => 'garoe_contact_address',
+		'settings' => 'garoe_custom_settings[contact_address]',
+		'type'     => 'text'
+	));
+	//imagen
+	$wp_customize->add_setting('garoe_custom_settings[image_contacto]',array(
+		'default' => '',
+		'type'    => 'option'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,'image_contacto',array(
+		'label'    => __('Imagen en Contacto', 'garoe-framework'),
+		'section'  => 'garoe_contact_address',
+		'settings' => 'garoe_custom_settings[image_contacto]',
+	)));
 }
 
 
