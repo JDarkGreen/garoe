@@ -50,6 +50,8 @@ $color_green      : #489100
 $color_lemon      : #e6ffcc
 $color_claro_green: #688c00
 
+$color_limon      : #c2fe82
+
 $color_red        : #b22d00 
 $color_dark_red   : #b22c00
 
@@ -492,3 +494,86 @@ $color_pink_claro : #ebaa98
 	background     : url('../images/bn_inicio_inferior.jpg') no-repeat
 	background-size: 100% 100%
 	min-height     : 150px
+
+	//item flexbox
+	.item-flexbox
+		align-items: center 
+		display    : flex
+
+	//items centrado
+	.item-centrado
+		display        : flex
+		justify-content: space-around
+
+
+//contenedor de los articulos en el pié de página
+.mainFooter__content
+	color      : white 
+	display    : flex
+	padding    : 28px 0
+
+//articulos de cada item
+.mainFooter__content__item
+	h2 
+		font-family: "Alexis"
+		font-size  : 22px 
+		margin     : 0 auto 13px
+
+	//parrafo
+	p 
+		font-size: 0.75em
+
+		span
+			display: block
+			margin : 9px auto 
+
+//items personalizados
+.mainFooter__content__item--nosotros
+	border-right: 1px solid $color_limon
+	padding     : 0 10px 
+	width       : 45%
+
+	//figure
+	.item__figure
+		margin   : 0 0 0 16px
+		min-width: 168px
+		width    : 100%
+
+//item redes sociales.
+.mainFooter__content__item--sociales
+	align-items : center
+	border-right: 1px solid #c2fe82
+	display     : flex
+	padding     : 0 50px
+
+	//items
+	a 
+		@include transition("all 400ms ease")
+		margin: 0 6px 
+
+		&:hover 
+			@include opacity(0.7)
+
+//item de informacion
+.mainFooter__content__item--information
+	padding: 0 0 0 28px
+
+	//lista
+	ul 
+		list-style-type: none
+		margin         : 0 auto 15px
+		padding        : 0 
+
+		li 
+			margin: 0 0 5px 
+			//icono
+			i 
+				display       : inline-block
+				margin        : 0 5px 0 0 
+				max-width     : 24px
+				vertical-align: middle 
+				width         : 100% 
+
+	.title-web 
+		font-size: 1em
+

@@ -102,6 +102,7 @@ function garoe_customize_register($wp_customize) {
 		'priority' => 40
 	));
 	
+	//textarea
 	$wp_customize->add_setting('garoe_custom_settings[widget_nosotros]', array(
 		'default' => '',
 		'type' => 'option'
@@ -113,7 +114,59 @@ function garoe_customize_register($wp_customize) {
 		'settings' => 'garoe_custom_settings[widget_nosotros]',
 		'type'     => 'textarea'
 	));
+	//imagen
+	$wp_customize->add_setting('garoe_custom_settings[image_nosotros]',array(
+		'default' => '',
+		'type'    => 'option'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize,'widget_nosotros',array(
+		'label'    => __('Imagen Nosotros', 'garoe-framework'),
+		'section'  => 'garoe_widget_nosotros',
+		'settings' => 'garoe_custom_settings[image_nosotros]',
+	)));
+
+	//Customizar REDES SOCIALES
+	$wp_customize->add_section('garoe_redes_sociales', array(
+		'title' => __('Redes Sociales', 'garoe-framework'),
+		'description' => __('Sección Redes Sociales', 'garoe-framework'),
+		'priority' => 41
+	));	
+	//facebook
+	$wp_customize->add_setting('garoe_custom_settings[red_social_fb]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	$wp_customize->add_control('garoe_custom_settings[red_social_fb]', array(
+		'label'    => __('Coloca el link de facebook de la empresa', 'garoe-framework'),
+		'section'  => 'garoe_redes_sociales',
+		'settings' => 'garoe_custom_settings[red_social_fb]',
+		'type'     => 'text'
+	));
+	//youtube
+	$wp_customize->add_setting('garoe_custom_settings[red_social_ytube]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	$wp_customize->add_control('garoe_custom_settings[red_social_ytube]', array(
+		'label'    => __('Coloca el link de youtube de la empresa', 'garoe-framework'),
+		'section'  => 'garoe_redes_sociales',
+		'settings' => 'garoe_custom_settings[red_social_ytube]',
+		'type'     => 'text'
+	));
+	//twitter
+	$wp_customize->add_setting('garoe_custom_settings[red_social_twitter]', array(
+		'default' => '',
+		'type' => 'option'
+	));
+	$wp_customize->add_control('garoe_custom_settings[red_social_twitter]', array(
+		'label'    => __('Coloca el link de twitter de la empresa', 'garoe-framework'),
+		'section'  => 'garoe_redes_sociales',
+		'settings' => 'garoe_custom_settings[red_social_twitter]',
+		'type'     => 'text'
+	));
+
+}
 
 
-}	
 ?>
