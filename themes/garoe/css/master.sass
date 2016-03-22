@@ -56,6 +56,7 @@ $color_red        : #b22d00
 $color_dark_red   : #b22c00
 
 $color_brow       : #A94E0A
+$color_semibrow   : #4e4635
 
 $color_black_text : #444444
 $color_gray       : #eeeeee
@@ -365,10 +366,41 @@ $color_pink_claro : #ebaa98
 
 	//>>>>>>> galeria con 4 articulos
 	.mainContent__gallery__article--images
-		margin  : 0 10px 15px
+		margin  : 0 1px 1px
 		overflow: hidden
-		width   : 22%
-	
+		width   : 33%
+		
+		//hover
+		&:hover
+			//title
+			h3
+				background: green
+				color     : white 
+			//imagen
+			a 
+				img 
+					@include opacity(0.9)
+					@include transform("scale(1.2)")
+
+		//contenedor imagen
+		a 
+			overflow: hidden
+			img
+				@include transition("all 600ms ease")
+			
+
+		//titulo
+		h3
+			@include transition("all 600ms ease")
+			background : rgba( 0, 0, 0 , .1)
+			color      : $color_semibrow
+			font-family: 'Oswald', sans-serif
+			font-size  : 14px 
+			margin     : 0 auto
+			padding    : 20px 
+			position   : relative
+			z-index    : 999
+			
 
 
 /***************** SIDEBAR  *********************/
@@ -544,7 +576,7 @@ $color_pink_claro : #ebaa98
 	align-items : center
 	border-right: 1px solid #c2fe82
 	display     : flex
-	padding     : 0 50px
+	padding     : 0 40px
 
 	//items
 	a 

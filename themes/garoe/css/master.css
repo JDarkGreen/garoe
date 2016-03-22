@@ -333,9 +333,51 @@ body {
       font-size: 15px;
       margin: 0 auto 5px; }
   .mainContent__gallery .mainContent__gallery__article--images {
-    margin: 0 10px 15px;
+    margin: 0 1px 1px;
     overflow: hidden;
-    width: 22%; }
+    width: 33%; }
+    .mainContent__gallery .mainContent__gallery__article--images:hover h3 {
+      background: green;
+      color: white; }
+    .mainContent__gallery .mainContent__gallery__article--images:hover a img {
+      filter: alpha(opacity=90);
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+      -webkit-opacity: 0.9;
+      -khtml-opacity: 0.9;
+      -moz-opacity: 0.9;
+      -ms-opacity: 0.9;
+      -o-opacity: 0.9;
+      opacity: 0.9;
+      -webkit-transform: scale(1.2);
+      -khtml-transform: scale(1.2);
+      -moz-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      -o-transform: scale(1.2);
+      transform: scale(1.2); }
+    .mainContent__gallery .mainContent__gallery__article--images a {
+      overflow: hidden; }
+      .mainContent__gallery .mainContent__gallery__article--images a img {
+        -webkit-transition: all 600ms ease;
+        -khtml-transition: all 600ms ease;
+        -moz-transition: all 600ms ease;
+        -ms-transition: all 600ms ease;
+        -o-transition: all 600ms ease;
+        transition: all 600ms ease; }
+    .mainContent__gallery .mainContent__gallery__article--images h3 {
+      -webkit-transition: all 600ms ease;
+      -khtml-transition: all 600ms ease;
+      -moz-transition: all 600ms ease;
+      -ms-transition: all 600ms ease;
+      -o-transition: all 600ms ease;
+      transition: all 600ms ease;
+      background: rgba(0, 0, 0, 0.1);
+      color: #4e4635;
+      font-family: "Oswald", sans-serif;
+      font-size: 14px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 999; }
 
 /***************** SIDEBAR  ******************** */
 .sidebarPreFooter {
@@ -456,7 +498,7 @@ body {
   align-items: center;
   border-right: 1px solid #c2fe82;
   display: flex;
-  padding: 0 50px; }
+  padding: 0 40px; }
   .mainFooter__content__item--sociales a {
     -webkit-transition: all 400ms ease;
     -khtml-transition: all 400ms ease;

@@ -79,7 +79,12 @@
 					<?php $facebook = $options['red_social_fb']; if( !empty($facebook) ) : ?>
 					<li>
 						<i><img src="<?= IMAGES ?>/iconos/icono_facebook.png" alt="facebook" class="img-responsive" /></i>
-						<?= $facebook ?>
+						<?php 
+							$facebook = str_replace( "https://www.", "", $facebook );
+							$facebook = str_replace( "http://www.", "", $facebook );
+							$facebook = str_replace( "http://", "", $facebook );
+							echo $facebook; 
+						?>
 					</li>
 					<?php endif; ?>
 				</ul> <!-- &/.ul -->
