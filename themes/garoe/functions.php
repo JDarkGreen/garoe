@@ -262,7 +262,7 @@ function create_garoe_taxonomy() {
 
 //>>>>>>>>> META BOX URL VIDEO  <<<<<<<<<<<<<<<
 
-$arr_pstype_video = ['testimonio','galeria-video']; 
+$arr_pstype_video = array('testimonio','galeria-video'); 
 
 add_action( 'add_meta_boxes', 'cd_meta_box_garoe_url_video_add' );
 
@@ -317,6 +317,54 @@ function cd_meta_box_garoe_url_video_save( $post_id )
         update_post_meta( $post_id, 'mb_garoe_url_video_text', wp_kses( $_POST['mb_garoe_url_video_text'], $allowed ) );
 }
 
+//>>>>>>>>> META BOX PROMOCION PRODUCTO  <<<<<<<<<<<<<<<
+$arr_pstype = array('product'); 
+
+add_action( 'add_meta_boxes', 'cd_meta_box_garoe_promotion_add' );
+
+//llamar funcion 
+function cd_meta_box_garoe_promotion_add()
+{	
+	//solo en testimonios
+	add_meta_box( 'mb-garoe-promotion-product', 'Promoción Producto', 'cd_meta_box_garoe_prom_product_cb', $arr_pstype , 'side', 'high' );
+}
+//customizar box
+function cd_meta_box_garoe_prom_product_cb( $post )
+{
+	// $post is already set, and contains an object: the WordPress post
+    global $post;
+
+	$values = get_post_custom( $post->ID );
+	$check  = isset( $values['mb_garoe_prom_product'] ) ? $values['mb_garoe_prom_product'][0] : '';
+
+	// We'll use this nonce field later on when saving.
+    wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
+
+    ?>
+    <p>
+		<input type="checkbox" id="mb_garoe_prom_product" name="mb_garoe_prom_product" <?php checked( $check, 'on' ); ?> />
+        <label for="mb_garoe_prom_product">Dale check si es producto Promocionado:</label>
+    </p>
+    <?php    
+}
+//guardar la data
+add_action( 'save_post', 'cd_meta_box_garoe_prom_product_save' );
+
+function cd_meta_box_garoe_prom_product_save( $post_id )
+{
+    // Bail if we're doing an auto save
+    if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+     
+    // if our nonce isn't there, or we can't verify it, bail
+    if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+     
+    // if our current user can't edit this post, bail
+    if( !current_user_can( 'edit_post' ) ) return;
+     
+    // Make sure your data is set before trying to save it
+	$chk = isset( $_POST['mb_garoe_prom_product'] ) && $_POST['mb_garoe_prom_product'] ? 'on' : 'off';
+    update_post_meta( $post_id, 'mb_garoe_prom_product', $chk );
+}
 
 /***********************************************************************************************/
 /* Localization Support */

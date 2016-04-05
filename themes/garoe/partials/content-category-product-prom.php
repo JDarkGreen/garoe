@@ -1,10 +1,10 @@
 <!--TITULO  -->
 <h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Categorías','garoe-framework'); ?></h3>
 
-<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<!-- Obtener todas las categorias -->
 	<?php $args = array(
-		'taxonomy'   => 'category',
+		'taxonomy'   => 'product_cat',
 		'hide_empty' => false,
 		'orderby'    => 'title',
 		'order'      => 'ASC',
@@ -27,26 +27,28 @@
 		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $control == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
 			<div class="panel-body"> 
 				<?php  
-					$args = array(
-						'post_type'      => 'post',
-						'posts_per_page' => -1,
-						'category_name'  => $cat->slug,
-					);
             		//conseguir las categorias hijas
-					$child_posts = get_posts( $args ); #var_dump($child_posts);
+				$child_categories = get_categories( array('taxonomy'=>'product_cat','orderby'=>'name','hide_empty' => false, 'parent' => $cat->cat_ID ) );
 				
 				echo "<ul class='toggle-category__menu'>";
 
-				if( count($child_posts) > 0 ) :
-					foreach ($child_posts as $child ) :
+				$primer_link = get_term_link($cat->slug , 'product_cat');
+				$primera_categoria = "<li>";
+				$primera_categoria .= "<a class='text-capitalize' href='$primer_link'> $cat->name</a>"; 
+				$primera_categoria .= "</li>"; 
+			
+				echo $primera_categoria;
+				
+				if( count($child_categories) > 0 ) :
+					foreach ($child_categories as $child ) :
 						?>
 					<li>
-						<a href="<?= $child->guid ?>">
-							<?= $child->post_title; ?>
+						<a href="<?= get_term_link($child->slug , 'product_cat'); ?>">
+							<?= $child->name; ?>
 						</a>
 					</li> <!-- end categoria hija -->
 				<?php endforeach; ?>
-			<?php else: ?> <li>No hay posts asociados a esta categoría</li>
+			<?php else: ?> <li><a href="">No hay subcategorias</a></li>
 			<?php endif; echo "</ul>" ; ?>
 		</div> <!-- /.panel-bpody -->
 	</div><!-- /.panel-collapse collapse -->

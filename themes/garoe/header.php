@@ -48,7 +48,7 @@
 					<!-- Telefonos -->
 					<p class="text-phone--green">
 						<?= !empty($options['contact_tel']) ? "Tel.: " . $options['contact_tel'] : '' ?>
-						<?= !empty($options['contact_cel']) ? "/ Cel.: " . $options['contact_cel'] : '' ?>
+						<?= !empty($options['contact_cel']) ? " Cel.: " . $options['contact_cel'] : '' ?>
 					</p>
 					<!-- Correo -->
 					<p class="text-email--red">
