@@ -636,6 +636,118 @@ $color_melon      : #fbf2ce
 			margin   : 0 auto
 
 
+/***************** SECCION PRODUCTOS PAGE AND SINGLE  *********************/
+
+//galeria
+.sectionProducts__gallery
+//articulo de producto
+.article-producto
+//contenedor link articulo
+.article-producto__link
+	background     : rgba(0,0,0,.2)
+	border         : 3px solid gray
+	display        : block 
+	margin         : 0 auto 15px 
+	padding        : 5px
+	position       : relative
+	text-decoration: none 
+	
+	//hover 
+	&:hover 
+		.article-producto__image
+			.figure-layout
+				+opacity(1)
+
+			img 
+				transform: scale(1.2)
+				-webkit-transform: scale(1.2)
+				-moz-transform: scale(1.2)
+				-o-transform: scale(1.2)
+
+		.article-producto__title
+			background: white 
+			color     : $color_green
+			padding   : 10px 5px 
+
+//imagen - figure
+.article-producto__image
+	overflow: hidden
+	width   : 100% 
+
+	//span oscure la imagen
+	.figure-layout
+		position  : absolute
+		top       : 0
+		right     : 0
+		left      : 0
+		bottom    : 0
+		background: rgba(0,0,0,.5)
+		@include transition("all 500ms ease")
+		+opacity( 0 )
+
+
+	img 
+		@include transition("all 500ms ease")
+
+//titulo
+.article-producto__title
+	background: $color_green
+	bottom    : 0
+	color     : white 
+	font-size : 1em
+	left      : 0
+	margin    : 0 auto
+	padding   : 5px
+	position  : absolute
+	right     : 0
+	@include transition("all 500ms ease")
+
+//CATEGORIAS DE LLOS PRODUCTOS 
+.sectionProducts__categories
+	
+	//paneles sobreescribir por defecto el de bootstrap
+	.panel-group
+		.panel 
+			@include border-radius( 0 )
+		.panel-default
+			.panel-heading
+				background: white 
+				color     : $color_green
+			.panel-body
+				//menu 
+				.toggle-category__menu
+					list-style-type: none 
+					margin         : 0 auto 
+					padding        : 0
+					li 
+						a 
+							color : black
+//titulo: 
+.sectionProducts__categories__title
+	background: $color_green
+	color     : white 
+	font-size : 20px
+	margin    : 0 auto 15px 
+	padding   : 5px 10px 
+
+//>>>>>>>>SINGLE DEL PRODUCTO
+.mainArticleProduct
+.mainArticleProduct__image
+
+//subtitulos
+.mainArticleProduct__subtitle
+	font-family: 'Alexis', sans-serif
+	font-size  : 26px 
+	margin     : 0 auto 10px
+//textos
+.mainArticleProduct__text
+	font-size: 0.9375em
+
+//Productos Relacionados
+.mainArticleProduct__related
+	margin: 20px auto 0
+
+
 /***************** >>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<  *********************/
 /***************** >>>>>>>>>>>>>>>>>>         <<<<<<<<<<<<<<<<<<<<<<<<  *********************/
 

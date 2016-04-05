@@ -409,11 +409,11 @@ function inox_add_thumbnail_columns_data( $column, $post_id ) {
 }
 
 if ( function_exists( 'add_theme_support' ) ) {
-    add_filter( 'manage_posts_columns' , 'inox_add_thumbnail_columns' );
-    add_action( 'manage_posts_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
+    //add_filter( 'manage_posts_columns' , 'inox_add_thumbnail_columns' );
+    //add_action( 'manage_posts_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
 
-    add_filter( 'manage_pages_columns' , 'inox_add_thumbnail_columns' );
-    add_action( 'manage_pages_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
+    //add_filter( 'manage_pages_columns' , 'inox_add_thumbnail_columns' );
+    //add_action( 'manage_pages_custom_column' , 'inox_add_thumbnail_columns_data', 10, 2 );
 }
 
 /***********************************************************************************************/
