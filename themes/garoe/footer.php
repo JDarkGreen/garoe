@@ -43,12 +43,12 @@
 						<?php endif; ?>
 						<?php $youtube = $options['red_social_ytube']; if( !empty($youtube) ) : ?>
 							<a href="<?= $youtube ?>" target="_blank">
-								<img src="<?= IMAGES ?>/redes-sociales/facebook.png" alt="youtube" class="img-responsive" />
+								<img src="<?= IMAGES ?>/redes-sociales/youtube.png" alt="youtube" class="img-responsive" />
 							</a><!-- /a - youtiube -->
 						<?php endif; ?>
 						<?php $twitter = $options['red_social_twitter']; if( !empty($twitter) ) : ?>
 							<a href="<?= $twitter ?>" target="_blank">
-								<img src="<?= IMAGES ?>/redes-sociales/facebook.png" alt="twitter" class="img-responsive" />
+								<img src="<?= IMAGES ?>/redes-sociales/twitter.png" alt="twitter" class="img-responsive" />
 							</a><!-- /a - twitter -->
 						<?php endif; ?>
 					</div> <!-- /.item-centrado -->

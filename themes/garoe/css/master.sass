@@ -702,8 +702,8 @@ $color_melon      : #fbf2ce
 	right     : 0
 	@include transition("all 500ms ease")
 
-//CATEGORIAS DE LLOS PRODUCTOS 
-.sectionProducts__categories
+//CATEGORIAS DE LLOS PRODUCTOS  Y SECCION DE CATEGORIA DEL BLOG
+.sectionProducts__categories, .sectionBlog__categories
 	
 	//paneles sobreescribir por defecto el de bootstrap
 	.panel-group
@@ -722,6 +722,13 @@ $color_melon      : #fbf2ce
 					li 
 						a 
 							color : black
+							padding-left: 0
+							@include transition("all 400ms ease")
+
+							&:hover 
+								color       : $color_green
+								padding-left: 10px
+
 //titulo: 
 .sectionProducts__categories__title
 	background: $color_green
@@ -746,6 +753,48 @@ $color_melon      : #fbf2ce
 //Productos Relacionados
 .mainArticleProduct__related
 	margin: 20px auto 0
+
+/************************************************************************************/
+/********************************* BLOG   *******************************************/
+/***********************************************************************************/
+
+.sectionBlogPage
+//ARTICULO DE BLOG MINIATURA
+.sectionBlogPage__article
+	border : 2px solid gray
+	margin : 0 auto 15px
+	padding: 5px
+
+	a 
+		color          : black 
+		text-decoration: none
+		&:hover 
+			text-decoration: none
+		
+		//boton VER MAS
+		&.btn-more 
+			background: $color_green
+			color     : white 
+			display   : inline-block
+			padding   : 5px 10px 
+			@include border-radius( 4px )
+		
+//imagen
+.sectionBlogPage__article__image
+	margin   : 0 10px 0 0 
+	max-width: 250px
+//titulo
+.sectionBlogPage__article__title
+	color          : $color_claro_green
+	font-size      : 20px
+	font-weight    : 600  
+//texto
+.sectionBlogPage__article__text
+	color    : black 
+	font-size: 15px 
+
+
+
 
 
 /***************** >>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<  *********************/
@@ -810,7 +859,8 @@ $color_melon      : #fbf2ce
 	//items
 	a 
 		@include transition("all 400ms ease")
-		margin: 0 6px 
+		margin   : 0 6px 
+		max-width: 70px
 
 		&:hover 
 			@include opacity(0.7)
