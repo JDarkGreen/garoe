@@ -20,11 +20,11 @@
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="heading<?= $cat->slug ?>">
 			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $cat->slug ?>" aria-expanded="true" aria-controls="collapse<?= $cat->slug ?>"> <strong><?= ucfirst( $cat->name ) ?></strong>
+				<a role="button" href="<?= get_term_link($cat->slug , 'product_cat') ?>"> <strong><?= ucfirst( $cat->name ) ?></strong>
 				</a> <!-- /./buttom -->
 			</h4> <!-- /.paqnel-title -->
 		</div> <!-- /.panel-heading -->
-		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $control == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
+		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse in ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
 			<div class="panel-body"> 
 				<?php  
 					$args = array(
