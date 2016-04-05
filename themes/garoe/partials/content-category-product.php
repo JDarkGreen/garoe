@@ -27,28 +27,32 @@
 		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $control == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
 			<div class="panel-body"> 
 				<?php  
+					$args = array(
+						'post_type'      => 'product',
+						'posts_per_page' => -1,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'product_cat',
+								'field'    => 'slug',
+								'terms'    =>  $cat->slug,
+							),
+						),
+					);
             		//conseguir las categorias hijas
-				$child_categories = get_categories( array('taxonomy'=>'product_cat','orderby'=>'name','hide_empty' => false, 'parent' => $cat->cat_ID ) );
+				$child_products = get_posts( $args ); #var_dump($child_products);
 				
 				echo "<ul class='toggle-category__menu'>";
-
-				$primer_link = get_term_link($cat->slug , 'product_cat');
-				$primera_categoria = "<li>";
-				$primera_categoria .= "<a class='text-capitalize' href='$primer_link'> $cat->name</a>"; 
-				$primera_categoria .= "</li>"; 
-			
-				echo $primera_categoria;
 				
-				if( count($child_categories) > 0 ) :
-					foreach ($child_categories as $child ) :
+				if( count($child_products) > 0 ) :
+					foreach ($child_products as $child ) :
 						?>
 					<li>
-						<a href="<?= get_term_link($child->slug , 'product_cat'); ?>">
-							<?= $child->name; ?>
+						<a href="<?= $child->guid; ?>">
+							<?= $child->post_title; ?>
 						</a>
 					</li> <!-- end categoria hija -->
 				<?php endforeach; ?>
-			<?php else: ?> <li><a href="">No hay subcategorias</a></li>
+			<?php else: ?> <li>No hay Productos Disponibles</li>
 			<?php endif; echo "</ul>" ; ?>
 		</div> <!-- /.panel-bpody -->
 	</div><!-- /.panel-collapse collapse -->
