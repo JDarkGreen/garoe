@@ -644,8 +644,8 @@ $color_melon      : #fbf2ce
 .article-producto
 //contenedor link articulo
 .article-producto__link
-	background     : rgba(0,0,0,.2)
-	border         : 3px solid gray
+	//background     : rgba(0,0,0,.2)
+	border         : 1px solid gray
 	display        : block 
 	margin         : 0 auto 15px 
 	padding        : 5px
@@ -698,15 +698,14 @@ $color_melon      : #fbf2ce
 		@include transition("all 500ms ease")
 		+opacity( 0 )
 
-
 	img 
 		@include transition("all 500ms ease")
 
 //titulo
 .article-producto__title
-	background: $color_green
+	background: white 
 	bottom    : 0
-	color     : white 
+	color     : $color_green 
 	font-size : 1em
 	left      : 0
 	margin    : 0 auto
@@ -737,8 +736,9 @@ $color_melon      : #fbf2ce
 							color : black
 							padding-left: 0
 							@include transition("all 400ms ease")
-
-							&:hover 
+							
+							//hover o activo link
+							&:hover, &.active
 								color       : $color_green
 								padding-left: 10px
 
@@ -774,9 +774,9 @@ $color_melon      : #fbf2ce
 .sectionBlogPage
 //ARTICULO DE BLOG MINIATURA
 .sectionBlogPage__article
-	border : 2px solid gray
-	margin : 0 auto 15px
-	padding: 5px
+	border-bottom: 1px solid gray
+	margin       : 0 auto 15px
+	padding      : 0 0 15px
 
 	a 
 		color          : black 
@@ -791,6 +791,11 @@ $color_melon      : #fbf2ce
 			display   : inline-block
 			padding   : 5px 10px 
 			@include border-radius( 4px )
+
+		//boton link a post
+		&.link-to-post
+			color: $color_green
+
 		
 //imagen
 .sectionBlogPage__article__image

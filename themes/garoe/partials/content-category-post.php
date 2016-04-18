@@ -1,3 +1,15 @@
+<?php  
+	//Obtener el post actual solo si es single
+	global $post;
+	//variable slug post actual
+	$current_post_slug = "";	
+
+	//ver si el post es single
+	if( is_single( $post->ID ) ) { $current_post_slug = $post->post_name; }
+
+?>
+
+
 <!--TITULO  -->
 <h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Categorías','garoe-framework'); ?></h3>
 
@@ -41,7 +53,7 @@
 					foreach ($child_posts as $child ) :
 						?>
 					<li>
-						<a href="<?= $child->guid ?>">
+						<a class="<?= $current_post_slug == $child->post_name ? 'active' : '' ?>" href="<?= $child->guid ?>">
 							<?= $child->post_title; ?>
 						</a>
 					</li> <!-- end categoria hija -->

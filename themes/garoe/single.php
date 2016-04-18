@@ -43,9 +43,9 @@
 
 				<!-- Texto  -->
 				<br/>
-				<p class="sectionBlogPage__article__text text-justify">
-					<?= $post->post_content; ?>
-				</p> <!-- /.sectionBlogPage__article__text -->
+				<div class="sectionBlogPage__article__text text-justify">
+					<?= apply_filters('the_content', $post->post_content); ?>
+				</div> <!-- /.sectionBlogPage__article__text -->
 
 			</article><!-- /.sectionBlogPage__main-article -->
 		</section> <!-- /.sectionProducts__gallery col-xs-8 -->

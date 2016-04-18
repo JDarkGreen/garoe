@@ -74,10 +74,17 @@
 			<!-- Mostrar el articulo   -->
 			<article class="sidebar-widget-article">
 				<h2 class="sidebar-widget-article__title"><?= the_title(); ?></h2>
-				<p class="sidebar-widget-article__text">
-					<?= get_the_content( __( '...Leer Más', 'garoe-framework' ) , true );
+				<div class="sidebar-widget-article__text">
+					<?php  
+						//capturar el buffer de contenido
+						ob_start();
+						the_content();
+						$contenido = ob_get_contents(); //capturar y setear buffer
+						ob_end_clean(); //limpiar buffer
+						echo preg_replace( '/\s+?(\S+)?$/' , '', substr( $contenido  , 0 , 200 )) . "... ";
 					?>
-				</p>
+					<a href="<?php the_permalink(); ?>"><?php _e('Leer más' , 'garoe-framework' ); ?></a>
+				</div> <!-- /.sidebar-widget-article__text -->
 			</article> <!-- /.sidebar-widget-article -->
 
 		<?php

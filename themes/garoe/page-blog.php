@@ -31,6 +31,7 @@
 			<?php foreach ($all_posts as $articulo ): ?>
 				<article class="sectionBlogPage__article col-xs-12">
 					<a href="<?= $articulo->guid ?>" class="sectionBlogPage__article__link">
+
 						<!-- Image -->
 						<figure class="sectionBlogPage__article__image pull-left">
 							<?php  
@@ -44,16 +45,20 @@
 							<?php endif; ?>
 
 						</figure><!-- /.article-producto__image -->
+
 						<!-- Title -->
 						<h2 class="sectionBlogPage__article__title"><?= $articulo->post_title ?></h2>
 						<!-- Extracto -->
 						<p class="sectionBlogPage__article__text">
-							<?php $contenido = $articulo->post_content; 
-								$contenido = substr( $contenido , 0 , 50 );
-								echo $contenido;
+							<?php 
+								$contenido = $articulo->post_content; 
+								$contenido = preg_replace( '/\s+?(\S+)?$/' , '' , substr( $contenido , 0 , 80 ) );
+								echo $contenido . "...";
 							?>
-							<a class="btn-more" href="<?= $articulo->guid ?>">Leer Más</a> <!-- btn more -->
-						</p> 				
+							<a class="link-to-post" href="<?= $articulo->guid ?>">Leer más</a> <!-- btn more -->
+						</p> 
+
+						<!-- Limpiar Floats --> <span class="clearfix"></span>				
 					</a> <!-- /.rticle-producto__link -->
 				</article><!-- /.article-producto -->
 			<?php endforeach ?>

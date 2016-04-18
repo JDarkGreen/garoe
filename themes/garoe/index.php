@@ -12,13 +12,13 @@
 				'post_type' => 'banner',
 				'tax_query' => array(
 				    array(
-						'taxonomy'         => 'banner_category',
-						'field'            => 'slug',
-						'terms'            => 'home',
+						'taxonomy' => 'banner_category',
+						'field'    => 'slug',
+						'terms'    => 'home',
 				    )
 				),
-				'orderby'          => 'menu_order',
-				'order'            => 'ASC'
+				'orderby' => 'menu_order',
+				'order'   => 'ASC'
 			);
 			$the_query = new WP_Query( $args );
 			// The Loop
