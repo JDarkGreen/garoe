@@ -45,6 +45,10 @@
 					<?php $cel = $options['contact_cel']; if( !empty($cel) ) : ?>
 						<p><i class="glyphicon glyphicon-phone"></i> <?= $cel; ?></p>
 					<?php endif; ?>
+					<!-- telefono  -->
+					<?php $tel = $options['contact_tel']; if( !empty($tel) ) : ?>
+						<p><i class="glyphicon glyphicon-phone-alt"></i> <?= $tel; ?></p>
+					<?php endif; ?>
 				</article> <!-- /.info-item -->
 				<article class="info-item">
 					<?php $url_img_contacto = $options['image_contacto']; if( !empty($url_img_contacto) ) : ?>

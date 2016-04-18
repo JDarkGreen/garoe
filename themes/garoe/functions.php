@@ -325,8 +325,8 @@ add_action( 'add_meta_boxes', 'cd_meta_box_garoe_promotion_add' );
 //llamar funcion 
 function cd_meta_box_garoe_promotion_add()
 {	
-	//solo en testimonios
-	add_meta_box( 'mb-garoe-promotion-product', 'Promoción Producto', 'cd_meta_box_garoe_prom_product_cb', $arr_pstype , 'side', 'high' );
+	//solo en productos
+	add_meta_box( 'mb-garoe-promotion-product', 'Promoción Producto', 'cd_meta_box_garoe_prom_product_cb', 'product' , 'side', 'high' );
 }
 //customizar box
 function cd_meta_box_garoe_prom_product_cb( $post )
