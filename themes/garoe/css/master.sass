@@ -131,6 +131,25 @@ $color_melon      : #fbf2ce
 	height : 144px
 	display: flex
 
+/* -------------------- HEADER VERSION MOBILE --------------------*/
+.mainHeader__small
+	background: white
+	border    : 2px solid gray
+	height    : 60px
+	left      : 0
+	padding   : 5px 10px
+	position  : fixed
+	right     : 0
+	top       : 0
+	z-index   : 999
+
+	/*------ << -- ICONOS DENTRO DEL HEADER --->>*/
+	.icon-header
+		background: $color_green
+		color     : white 
+		font-size : 35px
+		padding   : 5px
+
 
 /*****************  NAVIGATION **************************/
 .mainNav
@@ -282,8 +301,13 @@ $color_melon      : #fbf2ce
 		.mainContent__container__article
 			@include border-radius(10px)
 			background: $color_lemon
-			padding   : 20px 24px
 			display   : flex
+			flex-wrap : wrap 
+			padding   : 20px 24px
+
+			//imagen
+			figure 
+				margin: 0 auto 
 
 		//texto
 		.mainContent__container__article__text,.mainContent__container__article__text h3
@@ -349,8 +373,6 @@ $color_melon      : #fbf2ce
 		//cotenedor texto
 		.mainContent__containerService__article__text
 			width: 70%
-
-
 
 
 /***************** CONTENIDO PAGINA CONTACTO  *********************/
@@ -518,17 +540,21 @@ $color_melon      : #fbf2ce
 			position   : relative
 			z-index    : 999
 			
-
-
 /***************** SIDEBAR  *********************/
 
 //PREFOOTER 
 .sidebarPreFooter
 	background     : $color_gray
 	display        : flex
-	padding        : 25px 21px
-	flex-flow      : row wrap
+	flex-wrap      : wrap 
 	justify-content: space-between
+	padding        : 25px 21px
+
+// ===========>>>> SIDEBAR MOBILE 
+.sidebarMobile
+	background: white 
+	border    : 10px solid 
+	padding   : 20px 0 
 
 
 /***************** WIDGETS  *********************/
@@ -614,7 +640,8 @@ $color_melon      : #fbf2ce
 
 	//contenedor de productos
 	.productsContent__productos
-		display: flex
+		display  : flex
+		flex-wrap: wrap 
 
 	//articulos o productos
 	.productsContent__product
@@ -813,8 +840,6 @@ $color_melon      : #fbf2ce
 
 
 
-
-
 /***************** >>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<<  *********************/
 /***************** >>>>>>>>>>>>>>>>>>         <<<<<<<<<<<<<<<<<<<<<<<<  *********************/
 
@@ -906,3 +931,75 @@ $color_melon      : #fbf2ce
 	.title-web 
 		font-size: 1em
 
+/***************** >>>>>> MEDIA QUERIES <<<<<<  *********************/
+
+//MEDIDAS 480px max
+@media ( max-width: 480px )
+	
+	/*[[[[[[[[[[[ -----  CONTENEDOR SBSLIDE  --------------]]]]]]]]]]]*/
+	#sb-site
+		padding: 60px 0 0 0
+
+	/*[[[[[[[[[[[ -----  CONTENEDOR WRAPPER  --------------]]]]]]]]]]]*/
+	.main-wrapper
+		width: 100%
+
+	/*[[[[[[[[[[[ -----  CONTENEDOR PRINCIPAL -------------]]]]]]]]]]]*/
+	.mainContent
+		padding: 10px
+		//
+		.mainContent__container 
+			//article
+			.mainContent__container__article
+				p 
+					text-align: justify
+				
+
+	/*[[[[[[[[[[[ -----------  HEADER - -------------------]]]]]]]]]]]*/
+	// ==>> logo
+	.logo__container
+		width : 90px
+		margin: 0 auto
+
+	/*[[[[[[[[[[[ ----------  NAVIGATION  -----------------]]]]]]]]]]]*/
+	.mainNav
+		margin    : 20px auto 0
+		ul 
+			text-align: left
+			li 
+				display: block 
+				//submenu
+				ul 
+					position: relative
+					li 
+						&:hover,&.current-menu-item
+							background: white 
+							//link a submenu 
+							a 
+								color: $color_green
+				//link 
+				a 
+
+	
+	/*[[[[[[[[[[[ ------- SECCION PORTADA - BANNER --------]]]]]]]]]]]*/
+	.sectionBanner
+		margin: 0 auto
+		.carousel-inner 
+			.item 
+				.carousel-caption 
+					right: 20%
+					h2,p
+						font-size: 15px
+
+	//botones del banner
+	.btn-arrowBanner
+		font-size: 30px
+
+	/*[[[[[[[[[[[ ------- SECCION PORTADA - PRODUCTOS ------]]]]]]]]]]]*/
+	.productsContent 
+		.productsContent__product
+			width: 100%
+
+	/*[[[[[[[[[[[ ------- FOOTER  - SIDEBAR PREFOOTER ------]]]]]]]]]]]*/
+	.sidebar-widget-prefooter
+		width: 100%

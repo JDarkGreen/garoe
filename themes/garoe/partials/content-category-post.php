@@ -1,11 +1,19 @@
 <?php  
 	//Obtener el post actual solo si es single
-	global $post;
+	global $post; 
 	//variable slug post actual
-	$current_post_slug = "";	
+	$current_post_slug = "";
+	$category_slug     = "";
 
 	//ver si el post es single
-	if( is_single( $post->ID ) ) { $current_post_slug = $post->post_name; }
+	if( is_single( $post->ID ) ) { 
+		$current_post_slug = $post->post_name; 
+
+		//conseguir las categorias del post
+		$categories    = get_the_category( $post->ID ); 
+		$category_slug = $categories[0]->slug;
+	}
+
 
 ?>
 
@@ -36,7 +44,7 @@
 				</a> <!-- /./buttom -->
 			</h4> <!-- /.paqnel-title -->
 		</div> <!-- /.panel-heading -->
-		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $control == 0 ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
+		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $category_slug == $cat->slug ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
 			<div class="panel-body"> 
 				<?php  
 					$args = array(

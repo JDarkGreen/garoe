@@ -95,6 +95,9 @@
 		</section> <!-- /main-wrapper -->
 
 	</footer> <!-- /.mainFooter -->
+
+<!-- Fin de Contenedor responsive Design libreria slidebar -->
+</div>
 	
 	<?php wp_footer(); ?>
 

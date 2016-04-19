@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 
 	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!-- Google Web Font -->
 	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet'>
@@ -32,7 +32,8 @@
 	<?php $options = get_option('garoe_custom_settings'); ?>
 	
 	<!-- HEADER PRINCIPAL  -->
-	<header class="mainHeader">
+	<header class="mainHeader hidden-xs">
+
 		<section class="mainHeader__pre-container main-wrapper main-wrapper--align-center">
 			<div class="main-wrapper__middle">
 				<!-- Logo -->
@@ -71,5 +72,44 @@
 			</div> <!-- /main-wrapper -->
 		</nav> <!-- /.mainNav -->
 
-
 	</header> <!-- /.mainHeader -->
+
+	<!-- HEADER MOBILE solo visible en mobiles  -->
+	<header class="mainHeader__small visible-xs-block sb-slide">
+		<!-- Icono abrir menu de navegación -->
+		<span id="btn-toggle-menu-left" class="icon-header pull-left glyphicon glyphicon-th-list"></span>
+		<!-- Logo Centrado -->
+		<h1 class="logo">
+			<?php $options['logo'] == '' ? $logo = IMAGES . '/logo.png' : $logo = $options['logo']; ?>
+			<a class="logo__container" href="<?= home_url(); ?>">
+				<img class="img-responsive" src="<?= $logo; ?>" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>" />
+			</a>
+		</h1> <!-- /logo -->		 
+	</header><!-- /.mainHeader__small -->
+
+
+	<!-- ASIDE BARRA SOLO MOBILE libreria slidebar-->
+	<aside class="sidebarMobile sb-slidebar sb-left">
+  	<!-- Your left Slidebar content. -->
+  	<!-- Logo -->
+		<h1 class="logo">
+			<?php $options['logo'] == '' ? $logo = IMAGES . '/logo.png' : $logo = $options['logo']; ?>
+			<a class="logo__container" href="<?= home_url(); ?>">
+				<img class="img-responsive" src="<?= $logo; ?>" alt="<?php bloginfo('name'); ?> | <?php bloginfo('description'); ?>" />
+			</a>
+		</h1> <!-- /logo -->
+
+		<!-- MENU DE NAVEGACION PRINCIPAL  -->
+		<nav class="mainNav">
+			<?php wp_nav_menu(
+				array(
+					'theme_location' => 'main-menu'
+				));
+			?>
+		</nav> <!-- /.mainNav -->
+
+	</aside> <!-- /.sidebarMobile sb-slidebar sb-left -->
+
+
+	<!-- Inicio de Contenedor responsive Design libreria slidebar -->
+	<div id="sb-site">

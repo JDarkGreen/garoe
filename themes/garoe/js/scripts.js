@@ -5,6 +5,28 @@ var j = jQuery.noConflict();
 
 	j(document).on('ready',function(){
 
+    //##################### LIBRERIA SLIDEBAR VERSION MOBILE  ####################//
+    var mySlidebars = new j.slidebars({
+      siteClose         : true, // true or false
+      disableOver       : 480, // integer or false
+      hideControlClasses: true, // true or false
+      scrollLock        : false // true or false
+    });
+
+    //Abrir con el boton de navegacion
+    j("#btn-toggle-menu-left").on('click',function(){
+      //abrir slidebar
+      mySlidebars.slidebars.toggle('left');
+      //cambiar clase
+      if( j(this).hasClass('glyphicon-th-list') ){ 
+        j(this).removeClass('glyphicon-th-list').addClass('glyphicon-screenshot'); 
+      }else{
+        j(this).removeClass('glyphicon-screenshot').addClass('glyphicon-th-list'); 
+      }
+
+    });
+
+
 		//##################### MENUS #######################//
 
 		var main_menu     = j('nav.mainNav');
