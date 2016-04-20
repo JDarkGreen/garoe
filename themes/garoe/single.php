@@ -11,9 +11,14 @@
 	<section class="mainContent__container">
 		<h2 class="mainContent__container__title"><?php _e( $post->post_title , 'garoe-framework' ); ?></h2>
 
+		<!-- Boton ver más articulos solo visible en mobile - abre menu de navegacion lateral derecho -->
+		<a href="#" class="btn-more-to-aside-right text-uppercase visible-xs-inline-block js-toggle-right" data-section="section-categories-blog">
+			<?php _e('ver más artículos' , 'garoe-framework' ); ?>
+		</a> <!-- /.btn-more-to-aside-right -->
+
 
 		<!-- contenedor de la galería de productos -->
-		<section class="sectionBlogPage col-xs-8">
+		<section class="sectionBlogPage col-xs-12 col-sm-8">
 
 			<!-- Datos del Post -->
 			<p class="mainContent__container__info-post"><small><em>
@@ -48,15 +53,15 @@
 				</div> <!-- /.sectionBlogPage__article__text -->
 
 			</article><!-- /.sectionBlogPage__main-article -->
-		</section> <!-- /.sectionProducts__gallery col-xs-8 -->
+		</section> <!-- /.sectionProducts__gallery col-xs-12 col-sm-8 -->
 
 		<!-- Barra lateral con las categorias de los productos -->
-		<aside class="sectionBlog__categories col-xs-4">
+		<aside class="sectionBlog__categories col-xs-4 hidden-xs">
 
 			<!-- Incluir template categorias -->
 			<?php include( locate_template('partials/content-category-post.php') ) ?>
 
-		</aside><!-- /.sectionProducts__categories col-xs-4 -->
+		</aside><!-- /.sectionProducts__categories col-xs-4 hidden-xs -->
 
 		<!-- Clearfix --> <div class="clearfix"></div>
 	

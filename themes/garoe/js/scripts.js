@@ -26,6 +26,26 @@ var j = jQuery.noConflict();
 
     });
 
+    //##################### LIBRERIA SLIDEBAR VERSION MOBILE  ####################//
+    // ============>>>> Nota: segun el atributo seccion del boton , muestra el contenido
+    // si es un producto o si es un articulo de blog 
+    j(".js-toggle-right").on('click',function(e){
+      //prevenir evento por defecto
+      e.preventDefault();
+
+      //CAPTURAR SECCION A MOSTRAR POR ATRIBUTO
+      var open_section = j(this).attr('data-section');
+      //ocultar todas las secciones de la barra lateral derecha 
+      j(".sidebarMobile__content").addClass('hide');
+
+      //mostrar la seccion
+      j("#"+open_section).removeClass('hide');
+
+      //abrir slidebar lateral derecho 
+      mySlidebars.slidebars.toggle('right');
+
+    });
+
 
 		//##################### MENUS #######################//
 

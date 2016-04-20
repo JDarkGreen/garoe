@@ -11,17 +11,19 @@
 
 		//conseguir las categorias del post
 		$categories    = get_the_category( $post->ID ); 
-		$category_slug = $categories[0]->slug;
+		$category_slug = $categories[0]->slug; 
 	}
 
 
 ?>
 
-
 <!--TITULO  -->
 <h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Categorías','garoe-framework'); ?></h3>
 
-<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+<!-- Numero de accordeon id -->
+<?php $num_accordeon_post = isset($accordeon_id_post) ? $accordeon_id_post : '2'; ?>
+
+<div class="panel-group" id="accordeon<?= $num_accordeon_post ?>" role="tablist" aria-multiselectable="true">
 	<!-- Obtener todas las categorias -->
 	<?php $args = array(
 		'taxonomy'   => 'category',
@@ -38,13 +40,16 @@
 	foreach ($all_categories as $cat ) :
 		?>
 	<div class="panel panel-default">
+	
 		<div class="panel-heading" role="tab" id="heading<?= $cat->slug ?>">
 			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?= $cat->slug ?>" aria-expanded="true" aria-controls="collapse<?= $cat->slug ?>"> <strong><?= ucfirst( $cat->name ) ?></strong>
+				<a role="button" data-toggle="collapse" data-parent="#accordeon<?= $num_accordeon_post ?>" href="#collapse<?= $cat->slug . $num_accordeon_post ?>" aria-expanded="true" aria-controls="collapse<?= $cat->slug ?>"> 
+					<strong><?= ucfirst( $cat->name ) ?></strong>
 				</a> <!-- /./buttom -->
 			</h4> <!-- /.paqnel-title -->
 		</div> <!-- /.panel-heading -->
-		<div id="collapse<?= $cat->slug ?>" class="panel-collapse collapse <?= $category_slug == $cat->slug ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
+
+		<div id="collapse<?= $cat->slug . $num_accordeon_post ?>" class="panel-collapse collapse <?= $category_slug == $cat->slug ? 'in' : '' ?>" role="tabpanel" aria-labelledby="heading<?= $cat->slug ?>">
 			<div class="panel-body"> 
 				<?php  
 					$args = array(

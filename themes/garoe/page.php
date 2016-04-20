@@ -66,6 +66,15 @@
 					?>
 					<img src="http://lorempixel.com/163/99" alt="<?php the_title()  ?>" />
 					<?php endif; ?>
+					<!-- Logo de oferta -->
+					<?php 
+						$oferta = get_post_meta( get_the_ID() , 'mb_garoe_prom_product', true ); 
+						//si está activa la oferta o promoción
+						if( $oferta == "on" ) :
+					?>
+						<!-- Span Añade la oferta imagen-->
+						<span class="oferta-img-product"></span><!-- /oferta-img-product -->
+					<?php endif; ?>
 				</figure> <!-- /figure -->
 				<!-- Nombre del producto  -->
 				<h3><?php the_title(); ?></h3> 

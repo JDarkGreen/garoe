@@ -45,6 +45,9 @@
 							<img src="<?= $url_image ?>" alt="<?= $producto->post_title ?>" class="img-responsive" />
 							<?php endif; ?>
 
+							<!-- Span Añade la oferta imagen-->
+							<span class="oferta-img-product"></span><!-- /oferta-img-product -->
+
 							<!-- Span oscurece la image -->
 							<span class="figure-layout"></span>
 						</figure><!-- /.article-producto__image -->
@@ -53,7 +56,7 @@
 					</a> <!-- /.rticle-producto__link -->
 					
 					<!-- Texto Promoción -->
-					<span class="article-producto__promotion text-uppercase text-center">promoción</span>
+					<!--span class="article-producto__promotion text-uppercase text-center">promoción</span-->
 
 				</article><!-- /.article-producto -->
 			<?php endforeach ?>

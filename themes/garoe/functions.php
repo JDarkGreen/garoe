@@ -368,6 +368,67 @@ function cd_meta_box_garoe_prom_product_save( $post_id )
     update_post_meta( $post_id, 'mb_garoe_prom_product', $chk );
 }
 
+//>>>>>>>>> META BOX SELECT ADJUNTAR PROMOCION PRODUCTO AL BANNER PRINCIPAL <<<<<<<<<<<<<<<
+
+add_action( 'add_meta_boxes', 'cd_meta_box_garoe_banner_promotion_add' );
+
+//llamar funcion 
+function cd_meta_box_garoe_banner_promotion_add()
+{	
+	//adjunto en banner
+	add_meta_box( 'mb-garoe-banner-promotion-product', 'Banner Adjunto Promoción Producto', 'cd_meta_box_garoe_banner_prom_product_cb', 'banner' , 'side', 'high' );
+}
+//customizar box
+function cd_meta_box_garoe_banner_prom_product_cb( $post )
+{
+	// $post is already set, and contains an object: the WordPress post
+   global $post;
+	$values   = get_post_custom( $post->ID );
+	$selected = isset( $values['mb_garoe_banner_prom_product'] ) ? esc_attr( $values['mb_garoe_banner_prom_product'][0] ) : 'none';
+
+	// We'll use this nonce field later on when saving.
+  wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' ); ?>
+
+	<p>
+  	<label for="mb_garoe_banner_prom_product">Selecciona Producto Promoción adjunto al banner:</label>
+  	<br />
+    <select name="mb_garoe_banner_prom_product" id="mb_garoe_banner_prom_product">
+      <option value="none" <?php selected( $selected, 'none' ); ?>>Ninguno</option>
+      <!-- Mostrar todos los productos  -->
+      <?php  
+      	$args = array('post_type'=>'product','posts_per_page'=>-1,'order'=>'ASC','orderby'=>'name');
+      	$productos = get_posts( $args );
+
+      	foreach( $productos as $product ) :
+      ?>
+    		<option value="<?= $product->post_name ?>" <?php selected( $selected, $product->post_name ); ?> ><?= $product->post_title ?></option>
+    	<?php endforeach; ?>
+    </select>
+  </p>
+
+<?php 
+}
+
+//guardar la data
+add_action( 'save_post', 'cd_meta_box_garoe_banner_prom_product_save' );
+
+function cd_meta_box_garoe_banner_prom_product_save( $post_id )
+{
+  // Bail if we're doing an auto save
+  if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+   
+  // if our nonce isn't there, or we can't verify it, bail
+  if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'my_meta_box_nonce' ) ) return;
+   
+  // if our current user can't edit this post, bail
+  if( !current_user_can( 'edit_post' ) ) return;
+   
+  // Make sure your data is set before trying to save it
+  if( isset( $_POST['mb_garoe_banner_prom_product'] ) )
+    update_post_meta( $post_id, 'mb_garoe_banner_prom_product', esc_attr( $_POST['mb_garoe_banner_prom_product'] ) );
+}
+
+
 /***********************************************************************************************/
 /* Localization Support */
 /***********************************************************************************************/

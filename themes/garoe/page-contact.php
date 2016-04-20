@@ -87,7 +87,7 @@
 				</div><!-- /.form-group -->
 				<!-- Button -->
 				<div class="form-group">
-					<label for=""></label>
+					<label for="" class="hidden-xs"></label>
 					<button type="submit" class="text-uppercase"><?php _e( 'enviar' , 'garoe-framework' ); ?></button>
 				</div><!-- /.form-group -->
 

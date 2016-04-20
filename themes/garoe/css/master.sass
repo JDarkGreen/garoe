@@ -54,6 +54,7 @@ $color_limon      : #c2fe82
 
 $color_red        : #b22d00 
 $color_dark_red   : #b22c00
+$color_red_fuerte : #FE0000
 
 $color_brow       : #A94E0A
 $color_semibrow   : #4e4635
@@ -79,6 +80,44 @@ $color_melon      : #fbf2ce
 	color      : $color_red
 	font-size  : 0.938em
 	line-height: 18px
+
+
+/*************************************************************************/
+/*******************************  BOTONES   ******************************/
+/*************************************************************************/
+
+//boton aside version mobile solamente
+.btn-more-to-aside-right 
+	background     : $color_green
+	border-radius  : 5px
+	box-shadow     : 0px 3px 2px rgba(0,0,0,.6)
+	color          : white
+	font-size      : 15px 
+	margin         : 0 0 15px
+	padding        : 10px
+	text-decoration: none
+	//focus and hover
+	&:focus,&:hover 
+		color          : white 
+		text-decoration: none 
+
+//boton en el banner enlaza producto promocionado
+.btn_more-product
+	background     : $color_red_fuerte
+	color          : white
+	display        : inline-block
+	font-size      : 14px
+	margin         : 5px auto 0
+	padding        : 5px 10px
+	text-align     : center
+	text-decoration: none
+	+text-shadow(none)
+
+	&:hover,&:focus
+		color          : white 
+		text-decoration: none
+
+	
 	
 
 
@@ -266,8 +305,6 @@ $color_melon      : #fbf2ce
 	&:hover 
 		@include opacity(0.8)
 
-
-
 //left
 .btn-arrowBanner--left
 	left: 10%
@@ -331,6 +368,7 @@ $color_melon      : #fbf2ce
 	.mainContent__containerService__article
 		align-items: center 
 		display    : flex
+		flex-wrap  : wrap 
 
 		h2
 			color      : rgb(50, 47, 32)
@@ -555,6 +593,10 @@ $color_melon      : #fbf2ce
 	background: white 
 	border    : 10px solid 
 	padding   : 20px 0 
+//version con fondo negro
+.sidebarMobile--black
+	background: black !important
+	z-index   : 9999999
 
 
 /***************** WIDGETS  *********************/
@@ -645,11 +687,14 @@ $color_melon      : #fbf2ce
 
 	//articulos o productos
 	.productsContent__product
-		width: 25%
+		display: inline-block
+		margin : 0 5px 15px 
+		width  : 23%
 
 		//imagen
 		figure 
-			margin: 0 auto 16px
+			margin  : 0 auto 16px
+			position: relative
 
 		//titulo del producto
 		h3
@@ -728,6 +773,16 @@ $color_melon      : #fbf2ce
 	img 
 		@include transition("all 500ms ease")
 
+//span coloca la oferta imagen
+.oferta-img-product
+	background     : url("../images/oferta/oferta_boton.png") no-repeat
+	background-size: 100% 100%
+	height         : 45%
+	left           : 0
+	position       : absolute
+	top            : 0
+	width          : 45%
+
 //titulo
 .article-producto__title
 	background: white 
@@ -739,6 +794,7 @@ $color_melon      : #fbf2ce
 	padding   : 5px
 	position  : absolute
 	right     : 0
+	text-align: center
 	@include transition("all 500ms ease")
 
 //CATEGORIAS DE LLOS PRODUCTOS  Y SECCION DE CATEGORIA DEL BLOG
@@ -780,6 +836,9 @@ $color_melon      : #fbf2ce
 //>>>>>>>>SINGLE DEL PRODUCTO
 .mainArticleProduct
 .mainArticleProduct__image
+	margin  : 0 auto 
+	position: relative
+	width   : 90%
 
 //subtitulos
 .mainArticleProduct__subtitle
@@ -801,9 +860,9 @@ $color_melon      : #fbf2ce
 .sectionBlogPage
 //ARTICULO DE BLOG MINIATURA
 .sectionBlogPage__article
-	border-bottom: 1px solid gray
-	margin       : 0 auto 15px
-	padding      : 0 0 15px
+	border-bottom : 1px solid gray
+	margin        : 0 auto 15px
+	padding-bottom: 15px
 
 	a 
 		color          : black 
@@ -852,6 +911,7 @@ $color_melon      : #fbf2ce
 	.item-flexbox
 		align-items: center 
 		display    : flex
+		flex-wrap  : wrap 
 
 	//items centrado
 	.item-centrado
@@ -861,12 +921,14 @@ $color_melon      : #fbf2ce
 
 //contenedor de los articulos en el pié de página
 .mainFooter__content
-	color      : white 
-	display    : flex
-	padding    : 28px 0
+	color    : white 
+	display  : flex
+	flex-wrap: wrap 
+	padding  : 28px 0
 
 //articulos de cada item
 .mainFooter__content__item
+	margin: 0 auto 20px
 	h2 
 		font-family: "Alexis"
 		font-size  : 22px 
@@ -981,7 +1043,7 @@ $color_melon      : #fbf2ce
 				a 
 
 	
-	/*[[[[[[[[[[[ ------- SECCION PORTADA - BANNER --------]]]]]]]]]]]*/
+	/*[[[[[[[[[[[ ------- PÁGINA PORTADA - BANNER --------]]]]]]]]]]]*/
 	.sectionBanner
 		margin: 0 auto
 		.carousel-inner 
@@ -995,7 +1057,7 @@ $color_melon      : #fbf2ce
 	.btn-arrowBanner
 		font-size: 30px
 
-	/*[[[[[[[[[[[ ------- SECCION PORTADA - PRODUCTOS ------]]]]]]]]]]]*/
+	/*[[[[[[[[[[[ ------- PÁGINA PORTADA - PRODUCTOS ------]]]]]]]]]]]*/
 	.productsContent 
 		.productsContent__product
 			width: 100%
@@ -1003,3 +1065,45 @@ $color_melon      : #fbf2ce
 	/*[[[[[[[[[[[ ------- FOOTER  - SIDEBAR PREFOOTER ------]]]]]]]]]]]*/
 	.sidebar-widget-prefooter
 		width: 100%
+
+	//=======>>>> SECCCION NOSOTROS FOOTER
+	.mainFooter__content__item--nosotros
+		width: 100%
+	
+	/*[[[[[[[[[[[ ------- PAGINA PRODUCTOS  ------]]]]]]]]]]]*/
+	.sectionProducts__gallery
+
+	/*[[[[[[[[[[[ ------- PAGINA SERVICIOS  ------]]]]]]]]]]]*/
+	.mainContent__containerService 
+		//articulo
+		.mainContent__containerService__article 
+			//texto
+			.mainContent__containerService__article__text
+				width: 100%
+
+	/*[[[[[[[[[[[ ------- PAGINA BLOG  ------]]]]]]]]]]]*/
+	//==>> IMAGEN DE ARTICULO
+	.sectionBlogPage__article__image
+		margin   : 0 auto 10px 
+		max-width: 100% 
+
+	/*[[[[[[[[[[[ ------- PAGINA GALERIA  ------]]]]]]]]]]]*/
+	.mainContent__gallery 
+		//articulos 
+		.mainContent__gallery__article
+			width: 100%
+		//imagenes 
+		.mainContent__gallery__article--images
+			width: 100%
+
+	/*[[[[[[[[[[[ ------- PAGINA CONTACTO ------]]]]]]]]]]]*/
+	.mainContent__containerContacto 
+		//form 
+		.mainContent__containerContacto__form
+			margin   : 20px auto 0
+			max-width: 100% 
+			//form group
+			.form-group 
+				input,textarea
+					max-width: 100%
+					width    : 100%

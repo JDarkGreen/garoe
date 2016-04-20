@@ -88,8 +88,8 @@
 	</header><!-- /.mainHeader__small -->
 
 
-	<!-- ASIDE BARRA SOLO MOBILE libreria slidebar-->
-	<aside class="sidebarMobile sb-slidebar sb-left">
+	<!-- ASIDE BARRA SOLO MOBILE libreria slidebar IZQUIERDA -->
+	<aside class="sidebarMobile sb-slidebar sb-left sb-style-push">
   	<!-- Your left Slidebar content. -->
   	<!-- Logo -->
 		<h1 class="logo">
@@ -109,6 +109,30 @@
 		</nav> <!-- /.mainNav -->
 
 	</aside> <!-- /.sidebarMobile sb-slidebar sb-left -->
+
+	<!-- ASIDE BARRA SOLO MOBILE libreria slidebar DERECHA -->
+	<aside class="sidebarMobile sidebarMobile--black sb-slidebar sb-right sb-style-overlay">
+
+		<!-- Seccion muestra categorias del blog -->
+		<section id="section-categories-blog" class="sectionBlog__categories sidebarMobile__content">
+			<!-- Incluir template categorias -->
+			<?php 
+				$accordeon_id_post = "3";
+				include( locate_template('partials/content-category-post.php') ); 
+			?>
+		</section><!-- /section-categories -->
+
+		<!-- Seccion muestra categorias de productos -->
+		<section id="section-categories-product" class="sectionBlog__categories sidebarMobile__content">
+			<!-- Incluir template categorias -->
+			<?php 
+				$accordeon_id_product = "4";
+				include( locate_template('partials/content-category-product.php') ); 
+			?>
+		</section><!-- /section-categories -->
+		
+
+	</aside> <!-- /.sidebarMobile sb-slidebar sb-right -->
 
 
 	<!-- Inicio de Contenedor responsive Design libreria slidebar -->

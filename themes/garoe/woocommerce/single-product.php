@@ -19,15 +19,30 @@
 	<section class="mainContent__container">
 		<h2 class="mainContent__container__title"><?= $post->post_title ?></h2>
 
+		<!-- Boton ver más articulos solo visible en mobile - abre menu de navegacion lateral derecho -->
+		<a href="#" class="btn-more-to-aside-right text-uppercase visible-xs-inline-block js-toggle-right" data-section="section-categories-product">
+			<?php _e('ver más productos' , 'garoe-framework' ); ?>
+		</a> <!-- /.btn-more-to-aside-right -->
+
 		<!-- contenedor de la galería de productos -->
-		<section class="sectionProducts__gallery col-xs-8">
+		<section class="sectionProducts__gallery col-xs-12 col-sm-8">
 			<!-- Imagen del Producto -->
-			<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID ,'full') ); 
-				$url_image = $thumb[0]; 
-				if ( !empty($url_image) ) :
+			<?php $thumb = get_the_post_thumbnail($post->ID ,'full', array('class'=>'img-responsive') ); 
+				if ( !empty( $thumb ) ) :
 			?>
 			<figure class="mainArticleProduct__image">
-				<img src="<?= $url_image ?>" alt="<?= $post->post_title ?>" class="img-responsive" />
+				<!-- Mostrar la imagen -->
+				<?= $thumb; ?>
+
+				<?php 
+					$oferta = get_post_meta( $post->ID , 'mb_garoe_prom_product', true ); 
+					//si está activa la oferta o promoción
+					if( $oferta == "on" ) :
+				?>
+					<!-- Span Añade la oferta imagen-->
+					<span class="oferta-img-product"></span><!-- /oferta-img-product -->
+				<?php endif; ?>
+
 			</figure><!-- /.mainArticleProduct__image -->
 			<?php endif; ?>
 
@@ -59,16 +74,25 @@
 
 					foreach ($related as $producto ): 
 				?>
-					<article class="article-producto col-xs-4">
+					<article class="article-producto col-xs-12 col-sm-4">
 						<a href="<?= $producto->guid ?>" class="article-producto__link">
 							<!-- Image -->
 							<figure class="article-producto__image">
-								<?php  
-									$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $producto->ID ), 'full' );
-									$url_image = $thumb[0];
-									if( !empty($url_image) ) :
+								<?php
+									$thumb = get_the_post_thumbnail( $producto->ID ,'full', array('class'=>'img-responsive') ); 
+									if ( !empty( $thumb ) ){
+										echo $thumb;
+									}
 								?>
-								<img src="<?= $url_image ?>" alt="<?= $producto->post_title ?>" class="img-responsive" />
+
+								<?php 
+									$oferta = get_post_meta( $producto->ID , 'mb_garoe_prom_product', true ); 
+
+									//si está activa la oferta o promoción
+									if( $oferta == "on" ) :
+								?>
+									<!-- Span Añade la oferta imagen-->
+									<span class="oferta-img-product"></span><!-- /oferta-img-product -->
 								<?php endif; ?>
 
 								<!-- Span oscurece la image -->
@@ -86,7 +110,7 @@
 		</section> <!-- /.sectionProducts__gallery col-xs-8 -->
 
 		<!-- Barra lateral con las categorias de los productos -->
-		<aside class="sectionProducts__categories col-xs-4">
+		<aside class="sectionProducts__categories col-xs-4 hidden-xs">
 			
 			<!-- Incluir template categorias -->
 			<?php include( locate_template('partials/content-category-product.php') ) ?>

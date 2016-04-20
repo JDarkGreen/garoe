@@ -67,7 +67,7 @@
 			<?php  
 				$args = array(
 					'post_type'     => 'product',
-					'post_per_page' => 8
+					'post_per_page' => 8,
 				);
 
 				$the_query = new WP_Query($args);
@@ -79,7 +79,8 @@
 			<article class="productsContent__product text-center">
 				<!-- Imagen del producto -->
 				<figure>
-					<?php 
+
+					<?php
 						if( has_post_thumbnail() ) :
 							the_post_thumbnail( 'full' , array('class'=>'img-responsive center-block') );
 						else:
@@ -87,6 +88,7 @@
 					<img src="http://lorempixel.com/163/99" alt="<?php the_title()  ?>" />
 					<?php endif; ?>
 				</figure> <!-- /figure -->
+
 				<!-- Nombre del producto  -->
 				<h3><?php the_title(); ?></h3> 
 				<!-- Ver más -->

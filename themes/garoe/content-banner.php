@@ -35,6 +35,27 @@
 	      		<div class="carousel-caption">
 	      			<h2><?php the_title() ?></h2>
 	      			<p><?= get_the_content(); ?></p>
+
+	      			<!-- Boton enlazar si tiene producto -->
+							<?php  
+								$link_product = get_post_meta( get_the_ID() , 'mb_garoe_banner_prom_product' , true );
+								$link_product = ( !empty($link_product) && $link_product != 'none' ) ? $link_product : 'none';
+
+								if( $link_product !== 'none' ) :
+
+								//conseguir el posts producto por slug 
+								$the_slug = $link_product;
+								//array
+								$args = array(
+									'name'           => $the_slug,
+									'post_type'      => 'product',
+									'posts_per_page' => 1,
+								);
+								$producto = get_posts( $args );
+							?>
+								<a class="text-uppercase btn_more-product" href="<?= $producto[0]->guid; ?>"><?php _e('click aquí' , 'garoe-framework' ); ?></a>
+							<?php endif; ?>
+
 	      		</div> <!-- /carousel-caption -->
 	    	</div> <!-- /.item -->
     	<?php endif; ?>
