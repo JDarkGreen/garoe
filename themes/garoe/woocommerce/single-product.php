@@ -17,7 +17,7 @@
 
 	<!-- Seccion de presentacion -->
 	<section class="mainContent__container">
-		<h2 class="mainContent__container__title"><?= $post->post_title ?></h2>
+		<h2 class="mainContent__container__title text-capitalize"><?= $post->post_title ?></h2>
 
 		<!-- Boton ver más articulos solo visible en mobile - abre menu de navegacion lateral derecho -->
 		<a href="#" class="btn-more-to-aside-right text-uppercase visible-xs-inline-block js-toggle-right" data-section="section-categories-product">

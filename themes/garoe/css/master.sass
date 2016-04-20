@@ -37,10 +37,6 @@ html,body
 	height   : auto
 	font-size: 16px
 
-body
-	background     : url('../images/bg-body.jpg') no-repeat 
-	background-size: 100% 100%
-
 
 /*************************************************************************/
 /*********************       VARIABLES      ******************************/
@@ -118,8 +114,11 @@ $color_melon      : #fbf2ce
 		text-decoration: none
 
 	
-	
-
+/*************************************************************************/
+/**************************** BACKGROUNDS   ******************************/
+/*************************************************************************/	
+.bg-body
+	background: url("../images/bg-body.jpg")
 
 /*************************************************************************/
 /*********************   OBJETOS Y ELEMENTOS    **************************/
@@ -687,6 +686,7 @@ $color_melon      : #fbf2ce
 
 	//articulos o productos
 	.productsContent__product
+		border : 1px solid gray
 		display: inline-block
 		margin : 0 5px 15px 
 		width  : 23%
@@ -924,7 +924,7 @@ $color_melon      : #fbf2ce
 	color    : white 
 	display  : flex
 	flex-wrap: wrap 
-	padding  : 28px 0
+	padding  : 28px 0 0
 
 //articulos de cada item
 .mainFooter__content__item
@@ -946,7 +946,7 @@ $color_melon      : #fbf2ce
 .mainFooter__content__item--nosotros
 	border-right: 1px solid $color_limon
 	padding     : 0 10px 
-	width       : 45%
+	width       : 33.3%
 
 	//figure
 	.item__figure
@@ -1049,7 +1049,9 @@ $color_melon      : #fbf2ce
 		.carousel-inner 
 			.item 
 				.carousel-caption 
-					right: 20%
+					padding: 0
+					right  : 20%
+					top    : 5%
 					h2,p
 						font-size: 15px
 

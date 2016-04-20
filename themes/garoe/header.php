@@ -136,4 +136,4 @@
 
 
 	<!-- Inicio de Contenedor responsive Design libreria slidebar -->
-	<div id="sb-site">
+	<div id="sb-site" class="bg-body">
