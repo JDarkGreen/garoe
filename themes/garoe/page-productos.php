@@ -52,8 +52,6 @@
 								<span class="oferta-img-product"></span><!-- /oferta-img-product -->
 							<?php endif; ?>
 
-							<!-- Span oscurece la image -->
-							<span class="figure-layout"></span>
 						</figure><!-- /.article-producto__image -->
 						<!-- Title -->
 						<h2 class="article-producto__title"><?= $producto->post_title ?></h2>

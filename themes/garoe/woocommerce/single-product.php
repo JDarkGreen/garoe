@@ -49,7 +49,7 @@
 			<!-- Descripción  -->
 			<h3 class="mainArticleProduct__subtitle"><?php _e('Descripción del Producto: ','garoe-framework'); ?></h3>
 			<div class="mainArticleProduct__text text-justify">
-				<?= $post->post_content; ?>
+				<?= apply_filters('the_content' , $post->post_content ); ?>
 			</div><!-- /.text-justify -->
 
 			<!-- Sección Productos relacionados -->

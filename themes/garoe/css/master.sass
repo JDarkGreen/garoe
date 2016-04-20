@@ -706,11 +706,12 @@ $color_melon      : #fbf2ce
 			color    : $color_dark_red
 			font-size: 15px
 			margin   : 0 auto 5px			
-		//detalle
+		//detalle o link hacia el producto
 		a 
-			color    : $color_claro_green
-			font-size: 15px
-			margin   : 0 auto
+			color          : $color_claro_green
+			font-size      : 15px
+			margin         : 0 auto
+			text-decoration: none 
 
 
 /***************** SECCION PRODUCTOS PAGE AND SINGLE  *********************/
@@ -721,30 +722,16 @@ $color_melon      : #fbf2ce
 .article-producto
 //contenedor link articulo
 .article-producto__link
-	//background     : rgba(0,0,0,.2)
-	border         : 1px solid gray
+	//background   : rgba(0,0,0,.2)
 	display        : block 
 	margin         : 0 auto 15px 
+	overflow       : hidden
 	padding        : 5px
 	position       : relative
-	text-decoration: none 
-	
-	//hover 
+	//hover
 	&:hover 
-		.article-producto__image
-			.figure-layout
-				+opacity(1)
+		text-decoration: none
 
-			img 
-				transform: scale(1.2)
-				-webkit-transform: scale(1.2)
-				-moz-transform: scale(1.2)
-				-o-transform: scale(1.2)
-
-		.article-producto__title
-			background: white 
-			color     : $color_green
-			padding   : 10px 5px 
 
 //span texto indica promocion del producto
 .article-producto__promotion   
@@ -757,26 +744,27 @@ $color_melon      : #fbf2ce
 	max-width    : 80%
 	padding      : 5px
 
-
-
 //imagen - figure
 .article-producto__image
+	border  : 1px solid gray
+	height  : 154.656px
 	overflow: hidden
+	position: relative
 	width   : 100% 
 
-	//span oscure la imagen
-	.figure-layout
-		position  : absolute
-		top       : 0
-		right     : 0
-		left      : 0
-		bottom    : 0
-		background: rgba(0,0,0,.5)
-		@include transition("all 500ms ease")
-		+opacity( 0 )
-
+	//hover 
+	&:hover 
+		img 
+			transform        : scale(1.2)
+			-webkit-transform: scale(1.2)
+			-moz-transform   : scale(1.2)
+			-o-transform     : scale(1.2)
+	
+	//imagen de producto en miniatura
 	img 
-		@include transition("all 500ms ease")
+		+transition("all 600ms ease-in-out")
+		-webkit-backface-visibility: hidden
+		-webkit-transform: translateZ(0) scale(1.0, 1.0)
 
 //span coloca la oferta imagen
 .oferta-img-product
@@ -797,7 +785,7 @@ $color_melon      : #fbf2ce
 	left      : 0
 	margin    : 0 auto
 	padding   : 5px
-	position  : absolute
+	position  : relative
 	right     : 0
 	text-align: center
 	@include transition("all 500ms ease")
@@ -847,16 +835,19 @@ $color_melon      : #fbf2ce
 
 //subtitulos
 .mainArticleProduct__subtitle
-	font-family: 'Alexis', sans-serif
-	font-size  : 26px 
-	margin     : 0 auto 10px
+	color      : $color_dark_red
+	font-family: 'Alexis'
+	font-size  : 27px
+	font-weight: 600 
+	line-height: 32.4px
+	margin     : 0 0 15px
 //textos
 .mainArticleProduct__text
 	font-size: 0.9375em
 
 //Productos Relacionados
 .mainArticleProduct__related
-	margin: 20px auto 0
+	margin: 40px auto 0
 
 /************************************************************************************/
 /********************************* BLOG   *******************************************/
@@ -1081,6 +1072,9 @@ $color_melon      : #fbf2ce
 	
 	/*[[[[[[[[[[[ ------- PAGINA PRODUCTOS  ------]]]]]]]]]]]*/
 	.sectionProducts__gallery
+	//imagen miniatura de producto
+	.article-producto__image
+		height: auto
 
 	/*[[[[[[[[[[[ ------- PAGINA SERVICIOS  ------]]]]]]]]]]]*/
 	.mainContent__containerService 
