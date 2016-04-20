@@ -54,7 +54,12 @@ var j = jQuery.noConflict();
 
 		j(window).on('scroll', function(){
 			if( j(this).scrollTop() > main_menu_pos ) {
-				main_menu.css({position: 'fixed', top: '0px', 'z-index' : '99'});
+        //si esta desplegada barra de administracion de wp
+        if( main_menu.hasClass('nav-admin') ){
+				  main_menu.css({position: 'fixed', top: '32px', 'z-index' : '99'});
+        }else{
+          main_menu.css({position: 'fixed', top: '0px', 'z-index' : '99'});
+        }
 			}else{
 				main_menu.css({position: 'static', top: '0px'});
 			}

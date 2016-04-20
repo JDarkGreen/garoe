@@ -61,7 +61,12 @@
 		</section> <!-- /main-wrapper -->
 		
 		<!-- MENU DE NAVEGACION PRINCIPAL  -->
-		<nav class="mainNav">
+		<?php  
+			$class_nav = "";
+			/* Si se muestra la barra de menu de administracion agregar clase nav-admin */
+			if( is_admin_bar_showing() ){ $class_nav = "nav-admin"; }
+		?>
+		<nav class="mainNav <?= $class_nav ?>">
 			<div class="main-wrapper">
 				
 			<?php wp_nav_menu(
