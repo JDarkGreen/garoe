@@ -64,6 +64,7 @@ function garoe_customize_register($wp_customize) {
 		'priority' => 38
 	));
 	
+	//En Perú
 	$wp_customize->add_setting('garoe_custom_settings[contact_tel]', array(
 		'default' => '',
 		'type' => 'option'
@@ -76,6 +77,7 @@ function garoe_customize_register($wp_customize) {
 		'type'     => 'text'
 	));
 
+
 	//Customizar celular
 	$wp_customize->add_section('garoe_contact_cel', array(
 		'title' => __('Celular de Contacto', 'garoe-framework'),
@@ -83,17 +85,33 @@ function garoe_customize_register($wp_customize) {
 		'priority' => 39
 	));
 	
+	//En Perú
 	$wp_customize->add_setting('garoe_custom_settings[contact_cel]', array(
 		'default' => '',
 		'type' => 'option'
 	));
 	
 	$wp_customize->add_control('garoe_custom_settings[contact_cel]', array(
-		'label'    => __('Escribe el o los números de celular del contacto separados por comas', 'garoe-framework'),
+		'label'    => __('Escribe número de celular del contacto', 'garoe-framework'),
 		'section'  => 'garoe_contact_cel',
 		'settings' => 'garoe_custom_settings[contact_cel]',
 		'type'     => 'text'
+	));	
+
+	//EN otro país
+	$wp_customize->add_setting('garoe_custom_settings[contact_cel_other1]', array(
+		'default' => '',
+		'type' => 'option'
 	));
+	
+	$wp_customize->add_control('garoe_custom_settings[contact_cel_other1]', array(
+		'label'    => __('Escribe otro número de celular', 'garoe-framework'),
+		'section'  => 'garoe_contact_cel',
+		'settings' => 'garoe_custom_settings[contact_cel_other1]',
+		'type'     => 'text'
+	));
+
+
 
 	//Customizar WIDGET NOSOTROS
 	$wp_customize->add_section('garoe_widget_nosotros', array(

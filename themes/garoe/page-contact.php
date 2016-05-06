@@ -50,6 +50,14 @@
 						<p><i class="glyphicon glyphicon-phone-alt"></i> <?= $tel; ?></p>
 					<?php endif; ?>
 				</article> <!-- /.info-item -->
+
+				<article class="info-item">
+					<!-- otro celular  -->
+					<?php $cel1 = $options['contact_cel_other1']; if( !empty($cel1) ) : ?>
+						<p><i class="glyphicon glyphicon-phone"></i> <?= $cel1; ?></p>
+					<?php endif; ?>
+				</article> <!-- /.info-item -->
+
 				<article class="info-item">
 					<?php $url_img_contacto = $options['image_contacto']; if( !empty($url_img_contacto) ) : ?>
 						<figure class="image_contact">
