@@ -18,7 +18,7 @@
 ?>
 
 <!--TITULO  -->
-<h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Categorías','garoe-framework'); ?></h3>
+<h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Artículos','garoe-framework'); ?></h3>
 
 <!-- Numero de accordeon id -->
 <?php $num_accordeon_post = isset($accordeon_id_post) ? $accordeon_id_post : '2'; ?>

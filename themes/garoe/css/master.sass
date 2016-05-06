@@ -206,7 +206,7 @@ $color_melon      : #fbf2ce
 			display : inline-block
 			position: relative
 			z-index : 9999
-			@include transition("all 200ms ease-in-out")
+			+transition("all 200ms ease-in-out")
 
 			//activo y hover
 			&.current-menu-item, &.current-menu-ancestor , &:hover
@@ -809,7 +809,10 @@ $color_melon      : #fbf2ce
 					padding        : 0
 					li 
 						a 
-							color : black
+							color       : black
+							display     : block 
+							font-size   : 15px
+							margin      : 0 auto 10px 
 							padding-left: 0
 							@include transition("all 400ms ease")
 							
@@ -886,7 +889,7 @@ $color_melon      : #fbf2ce
 //titulo
 .sectionBlogPage__article__title
 	color          : $color_claro_green
-	font-size      : 20px
+	font-size      : 18px
 	font-weight    : 600  
 //texto
 .sectionBlogPage__article__text

@@ -1,5 +1,5 @@
 <!--TITULO  -->
-<h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Categorías','garoe-framework'); ?></h3>
+<h3 class="sectionProducts__categories__title text-capitalize"><?php _e('Productos','garoe-framework'); ?></h3>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<!-- Obtener todas las categorias -->

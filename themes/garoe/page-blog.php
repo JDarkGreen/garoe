@@ -10,8 +10,11 @@
 	<!-- Seccion de presentacion -->
 	<section class="mainContent__container">
 		<h2 class="mainContent__container__title"><?php _e('Nuestro Blog: ', 'garoe-framework' ); ?></h2>
-
-		<p><?php _e('Estos son nuestros artículos', 'garoe-framework' ); ?></p>
+		
+		<?php /*  
+			<p><?php _e('Estos son nuestros artículos', 'garoe-framework' ); ?></p>
+			*/
+		?>
 
 		<!-- ARTICULOS  -->
 		<?php 
@@ -58,7 +61,7 @@
 						<p class="sectionBlogPage__article__text">
 							<?php 
 								$contenido = $articulo->post_content; 
-								$contenido = preg_replace( '/\s+?(\S+)?$/' , '' , substr( $contenido , 0 , 80 ) );
+								$contenido = preg_replace( '/\s+?(\S+)?$/' , '' , substr( $contenido , 0 , 150 ) );
 								echo $contenido . "...";
 							?>
 							<a class="link-to-post" href="<?= $articulo->guid ?>">Leer más</a> <!-- btn more -->
